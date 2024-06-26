@@ -1,0 +1,143 @@
+.ui-radio-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+
+  input[type='radio'] {
+    outline: none;
+    position: absolute;
+    opacity: 0;
+    margin: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__icon {
+    cursor: pointer;
+    height: 15px;
+    display: flex;
+
+    &:before {
+      background: transparent;
+      content: '';
+      box-sizing: border-box;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--border-color);
+      border-radius: 100%;
+    }
+
+    &--small {
+      height: 12px;
+      &:before {
+        width: 13px;
+        height: 13px;
+        border: 1px solid;
+      }
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 10px;
+
+    &--right {
+      flex-direction: row-reverse;
+    }
+
+    &--small {
+      gap: 6px;
+    }
+  }
+
+  &__input-wrapper {
+    position: relative;
+  }
+
+  &--inline {
+    margin-right: 15px;
+    margin-bottom: 0;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &--checked .ui-radio-option__icon,
+  &__icon:active {
+    &:before {
+      background: transparent;
+      border-color: var(--blue-3);
+    }
+
+    // checked icon
+    &:after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 8px;
+      height: 8px;
+      background: var(--blue-3);
+      border-radius: 100%;
+    }
+  }
+
+  &--small {
+    margin-bottom: 5px;
+    &.ui-radio-option--checked .ui-radio-option__icon,
+    .ui-radio-option__icon:active {
+      &:after {
+        top: 3px;
+        left: 3px;
+        width: 7px;
+        height: 7px;
+      }
+    }
+  }
+
+  &--disabled {
+    .ui-radio-option__icon:before,
+    .ui-radio-option__icon:after,
+    .ui-radio-option__label {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &--text {
+    border: none;
+    margin-bottom: 0;
+
+    &.ui-radio-option--checked {
+      .ui-radio-option__label {
+        color: var(--blue-3);
+        text-decoration: underline;
+      }
+    }
+
+    .ui-radio-option__icon {
+      display: none;
+    }
+
+    .ui-radio-option__label {
+      justify-content: center;
+      padding: 5px;
+      margin-bottom: 0;
+      cursor: pointer;
+      &:hover {
+        color: var(--blue-3);
+      }
+
+      &--small {
+        padding: 3px;
+      }
+    }
+
+    &.ui-radio-option--inline {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import './variables/index.scss';
+@import './mixins/index.scss';
+
+@include font-faces();
+
+:root {
+  --font-primary: #{$font-primary};
+  --font-secondary: #{$font-secondary};
+
+  //colors
+  @include system-color-pallet();
+  @include brand-color-pallet();
+  @include neutral-colors();
+  @include gray-color-pallet();
+  @include feedback-color-pallet();
+  @include severity-color-pallet();
+}

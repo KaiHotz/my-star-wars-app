@@ -1,0 +1,223 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { getCSSVariable } from '../../utils';
+
+<Meta title="Variables/Colors" />
+
+<ColorPalette>
+  <ColorItem
+    title="Neutral"
+    subtitle=""
+    colors={{
+      ['--black']: getCSSVariable('--black'),
+      ['--white']: getCSSVariable('--white')
+    }}
+  />
+
+  <ColorItem
+    title="Brand"
+    subtitle=""
+    colors={{
+      ['--accent-1']: getCSSVariable('--accent-1'),
+      ['--accent-2']: getCSSVariable('--accent-2'),
+      ['--accent-3']: getCSSVariable('--accent-3')
+    }}
+  />
+
+  <ColorItem
+    title="Emphasis"
+    subtitle=""
+    colors={{
+      Primary: 'var(--emphasis-primary)',
+      Secondary: 'var(--emphasis-secondary)',
+      Tertiary: 'var(--emphasis-tertiary)',
+      Quartenray: 'var(--emphasis-quaternary)'
+    }}
+  />
+
+  <ColorItem
+    title="Feedback"
+    subtitle=""
+    colors={{
+      ['--info']: getCSSVariable('--info'),
+      ['--success']: getCSSVariable('--success'),
+      ['--warning']:getCSSVariable('--warning'),
+      ['--error']: getCSSVariable('--error')
+    }}
+  />
+
+  <ColorItem
+    title="Severity"
+    subtitle=""
+    colors={{
+      ['--critical']: getCSSVariable('--critical'),
+      ['--bad']: getCSSVariable('--bad'),
+      ['--poor']:getCSSVariable('--poor'),
+      ['--fair']: getCSSVariable('--fair'),
+      ['--good']:getCSSVariable('--good'),
+      ['--excellent']: getCSSVariable('--excellent')
+    }}
+  />
+
+  <ColorItem
+    title="Gray"
+    subtitle=""
+    colors={{
+     ['--gray-1']: getCSSVariable('--gray-1'),
+     ['--gray-2']: getCSSVariable('--gray-2'),
+     ['--gray-3']: getCSSVariable('--gray-3'),
+     ['--gray-4']: getCSSVariable('--gray-4'),
+     ['--gray-5']: getCSSVariable('--gray-5'),
+     ['--gray-6']: getCSSVariable('--gray-6'),
+     ['--gray-7']: getCSSVariable('--gray-7'),
+     ['--gray-8']: getCSSVariable('--gray-8'),
+     ['--gray-9']: getCSSVariable('--gray-9'),
+     ['--gray-10']: getCSSVariable('--gray-10'),
+    }}
+  />
+
+  <ColorItem
+    title="Blue"
+    subtitle="system"
+    colors={{
+     ['--blue-1']: getCSSVariable('--blue-1'),
+     ['--blue-2']: getCSSVariable('--blue-2'),
+     ['--blue-3']: getCSSVariable('--blue-3'),
+     ['--blue-4']: getCSSVariable('--blue-4'),
+     ['--blue-5']: getCSSVariable('--blue-5'),
+     ['--blue-6']: getCSSVariable('--blue-6'),
+    }}
+  />
+
+  <ColorItem
+    title="Blue-green"
+    subtitle="system"
+    colors={{
+     ['--blue-green-1']: getCSSVariable('--blue-green-1'),
+     ['--blue-green-2']: getCSSVariable('--blue-green-2'),
+     ['--blue-green-3']: getCSSVariable('--blue-green-3'),
+     ['--blue-green-4']: getCSSVariable('--blue-green-4'),
+     ['--blue-green-5']: getCSSVariable('--blue-green-5'),
+    }}
+  />
+
+  <ColorItem
+    title="Green"
+    subtitle="system"
+    colors={{
+     ['--green-1']: getCSSVariable('--green-1'),
+     ['--green-2']: getCSSVariable('--green-2'),
+     ['--green-3']: getCSSVariable('--green-3'),
+     ['--green-4']: getCSSVariable('--green-4'),
+     ['--green-5']: getCSSVariable('--green-5'),
+     ['--green-6']: getCSSVariable('--green-6'),
+    }}
+  />
+
+  <ColorItem
+    title="Yellow-green"
+    subtitle="system"
+    colors={{
+     ['--yellow-green-1']: getCSSVariable('--yellow-green-1'),
+     ['--yellow-green-2']: getCSSVariable('--yellow-green-2'),
+     ['--yellow-green-3']: getCSSVariable('--yellow-green-3'),
+     ['--yellow-green-4']: getCSSVariable('--yellow-green-4'),
+     ['--yellow-green-5']: getCSSVariable('--yellow-green-5'),
+    }}
+  />
+
+  <ColorItem
+    title="Yellow"
+    subtitle="system"
+    colors={{
+     ['--yellow-1']: getCSSVariable('--yellow-1'),
+     ['--yellow-2']: getCSSVariable('--yellow-2'),
+     ['--yellow-3']: getCSSVariable('--yellow-3'),
+     ['--yellow-4']: getCSSVariable('--yellow-4'),
+     ['--yellow-5']: getCSSVariable('--yellow-5'),
+    }}
+  />
+
+  <ColorItem
+    title="Yellow-orange"
+    subtitle="system"
+    colors={{
+     ['--yellow-orange-1']: getCSSVariable('--yellow-orange-1'),
+     ['--yellow-orange-2']: getCSSVariable('--yellow-orange-2'),
+     ['--yellow-orange-3']: getCSSVariable('--yellow-orange-3'),
+     ['--yellow-orange-4']: getCSSVariable('--yellow-orange-4'),
+     ['--yellow-orange-5']: getCSSVariable('--yellow-orange-5'),
+    }}
+  />
+
+  <ColorItem
+    title="Orange"
+    subtitle="system"
+    colors={{
+     ['--orange-1']: getCSSVariable('--orange-1'),
+     ['--orange-2']: getCSSVariable('--orange-2'),
+     ['--orange-3']: getCSSVariable('--orange-3'),
+     ['--orange-4']: getCSSVariable('--orange-4'),
+     ['--orange-5']: getCSSVariable('--orange-5'),
+    }}
+  />
+
+  <ColorItem
+    title="Red-orange"
+    subtitle="system"
+    colors={{
+     ['--red-orange-1']: getCSSVariable('--red-orange-1'),
+     ['--red-orange-2']: getCSSVariable('--red-orange-2'),
+     ['--red-orange-3']: getCSSVariable('--red-orange-3'),
+     ['--red-orange-4']: getCSSVariable('--red-orange-4'),
+     ['--red-orange-5']: getCSSVariable('--red-orange-5'),
+    }}
+  />
+
+  <ColorItem
+    title="Red"
+    subtitle="system"
+    colors={{
+     ['--red-1']: getCSSVariable('--red-1'),
+     ['--red-2']: getCSSVariable('--red-2'),
+     ['--red-3']: getCSSVariable('--red-3'),
+     ['--red-4']: getCSSVariable('--red-4'),
+     ['--red-5']: getCSSVariable('--red-5'),
+    }}
+  />
+
+  <ColorItem
+    title="Red-violet"
+    subtitle="system"
+    colors={{
+     ['--red-violet-1']: getCSSVariable('--red-violet-1'),
+     ['--red-violet-2']: getCSSVariable('--red-violet-2'),
+     ['--red-violet-3']: getCSSVariable('--red-violet-3'),
+     ['--red-violet-4']: getCSSVariable('--red-violet-4'),
+     ['--red-violet-5']: getCSSVariable('--red-violet-5'),
+    }}
+  />
+
+  <ColorItem
+    title="Violet"
+    subtitle="system"
+    colors={{
+     ['--violet-1']: getCSSVariable('--violet-1'),
+     ['--violet-2']: getCSSVariable('--violet-2'),
+     ['--violet-3']: getCSSVariable('--violet-3'),
+     ['--violet-4']: getCSSVariable('--violet-4'),
+     ['--violet-5']: getCSSVariable('--violet-5'),
+    }}
+  />
+
+  <ColorItem
+    title="Blue-violet"
+    subtitle="system"
+    colors={{
+     ['--blue-violet-1']: getCSSVariable('--blue-violet-1'),
+     ['--blue-violet-2']: getCSSVariable('--blue-violet-2'),
+     ['--blue-violet-3']: getCSSVariable('--blue-violet-3'),
+     ['--blue-violet-4']: getCSSVariable('--blue-violet-4'),
+     ['--blue-violet-5']: getCSSVariable('--blue-violet-5'),
+    }}
+  />
+</ColorPalette>

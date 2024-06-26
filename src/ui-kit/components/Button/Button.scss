@@ -1,0 +1,135 @@
+.ui-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+  height: 32px;
+  width: var(--ui-btn--width, auto);
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  font-family: var(--d-din);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 32px;
+  outline: 0;
+  padding: 0 16px;
+  color: var(--emphasis-primary);
+  &:hover {
+    background-color: var(--emphasis-tertiary);
+  }
+  &:active {
+    background-color: var(--emphasis-quaternary);
+    border-color: var(--emphasis-quaternary);
+  }
+
+  &--primary {
+    color: var(--gray-10);
+    background-color: var(--yellow-orange-3);
+    &:hover {
+      background-color: var(--orange-3);
+    }
+    &:active {
+      background-color: var(--red-orange-3);
+      border-color: var(--red-orange-3);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--emphasis-quaternary);
+  }
+
+  &--tertiary {
+    background-color: transparent;
+    border: 2px solid var(--emphasis-tertiary);
+
+    &.ui-btn--disabled {
+      background-color: transparent;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    &:hover {
+      background-color: transparent;
+    }
+    &:active {
+      border-color: transparent;
+    }
+    &.ui-btn--disabled {
+      background-color: transparent;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+    &.ui-btn--icon {
+      width: auto;
+      height: auto;
+      border-radius: initial;
+      padding: 0;
+    }
+  }
+
+  &--danger {
+    color: var(--red-orange-3);
+    background-color: transparent;
+    &:hover {
+      background-color: transparent;
+    }
+    &:active {
+      border-color: var(--red-orange-3);
+    }
+    &.ui-btn--disabled {
+      background-color: transparent;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &--disabled {
+    color: var(--emphasis-tertiary);
+    background-color: var(--emphasis-quaternary);
+    &:hover {
+      color: var(--emphasis-tertiary);
+      background-color: var(--emphasis-quaternary);
+    }
+    cursor: not-allowed;
+  }
+
+  &--small {
+    height: 20px;
+    column-gap: 6px;
+    border-radius: 10px;
+    padding: 0 6px;
+    font-weight: 600;
+    font-size: 12px;
+    &.ui-btn--number {
+      min-width: 20px;
+      border-radius: 6px;
+    }
+    &.ui-btn--icon {
+      width: 26px;
+    }
+  }
+
+  &--icon {
+    width: 32px;
+    border-radius: 8px;
+    column-gap: 6px;
+    padding: 0;
+    svg {
+      font-weight: 700;
+    }
+  }
+
+  &--number {
+    min-width: 32px;
+    border-radius: 8px;
+    padding: 0 5px;
+  }
+}

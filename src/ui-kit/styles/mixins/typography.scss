@@ -1,0 +1,114 @@
+/* Body 1 */
+@mixin body1 {
+  font-family: var(--font-secondary);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+}
+/* Body 2 */
+@mixin body2 {
+  font-family: var(--font-secondary);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+}
+/* Body 3 */
+@mixin body3 {
+  font-family: var(--font-secondary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+/* Body 4 */
+@mixin body4 {
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+/* Body 5 */
+@mixin body5 {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+/* Body 6 */
+@mixin body6 {
+  font-family: var(--font-secondary);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* Subtitle 1 */
+@mixin subtitle1 {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+/* Subtitle 2 */
+@mixin subtitle2 {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+/* Headline 1 */
+@mixin headline1 {
+  font-family: var(--font-primary);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 46px;
+}
+
+/* Headline 2 */
+@mixin headline2 {
+  font-family: var(--font-primary);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+/* Headline 3 */
+@mixin headline3 {
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+/* Headline 4 */
+@mixin headline4 {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+/* Headline 5 */
+@mixin headline5 {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+/* H1 */
+@mixin H1 {
+  font-family: var(--font-primary);
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 84px;
+}
+
+/* H2 */
+@mixin H2 {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}

@@ -1,0 +1,107 @@
+.ui-checkbox {
+  &__wrapper {
+    input[type='checkbox'] {
+      outline: none;
+      position: absolute;
+      opacity: 0;
+      margin: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+    &--left {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+  }
+
+  &__input-wrapper {
+    position: relative;
+  }
+
+  &__icon {
+    cursor: pointer;
+    height: 17px;
+    display: flex;
+
+    &:before {
+      content: '';
+      background: transparent;
+      box-sizing: border-box;
+      width: 17px;
+      height: 17px;
+      border: 2px solid var(--border-color);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+    }
+
+    &:active {
+      &:before {
+        box-shadow: 0 0 0 5px var (--blue-3);
+      }
+    }
+  }
+
+  &--checkmark-checked .ui-checkbox__icon {
+    &:before {
+      background: var(--blue-3);
+      border-color: var(--blue-3);
+    }
+
+    //checked icon
+    &:after {
+      left: 6px;
+      top: 3px;
+      width: 5px;
+      height: 9px;
+      transform: rotate(45deg);
+      border-bottom: 2px solid var(--white);
+      border-right: 2px solid var(--white);
+    }
+  }
+
+  &--square-checked .ui-checkbox__icon {
+    &:before {
+      background: var(--positive);
+      border-color: var(--blue-3);
+    }
+
+    // checked icon
+    &:after {
+      left: 4px;
+      top: 4px;
+      width: 9px;
+      height: 9px;
+      border-bottom: 9px solid var(--blue-3);
+    }
+  }
+
+  &--disabled {
+    .ui-checkbox__icon:before,
+    .ui-checkbox__icon:after,
+    .ui-checkbox__custom-icon,
+    .ui-checkbox__label {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__validation-wrapper {
+    display: flex;
+    padding: 5px 2px;
+    min-height: 18px;
+  }
+}

@@ -7,6 +7,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
+    'plugin:storybook/recommended',
   ],
   plugins: ['react', 'react-hooks', 'react-refresh', 'import', 'jsx-a11y', 'prettier'],
   env: {
@@ -68,7 +69,9 @@ module.exports = {
           '**/*.spec.[jt]s',
           '**/*.test.[jt]sx',
           '**/*.spec.[jt]sx',
+          '**/*.stories.@(js|jsx|mjs|ts|tsx)',
           './src/setupTests.ts',
+          './src/main.tsx',
           './vite.config.ts',
         ],
       },

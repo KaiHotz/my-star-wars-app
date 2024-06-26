@@ -1,0 +1,233 @@
+//brand-colors
+$accent-1: #e8ab22;
+$accent-2: #e19526;
+$accent-3: #d57a27;
+
+//neutral-colors
+$black: #000000;
+$white: #ffffff;
+
+//gray-colors
+$gray-1: #f5f5f5;
+$gray-2: #ebebeb;
+$gray-3: #d6d6d6;
+$gray-4: #a3a3a3;
+$gray-5: #7a7a7a;
+$gray-6: #525252;
+$gray-7: #3d3d3d;
+$gray-8: #292929;
+$gray-9: #1f1f1f;
+$gray-10: #141414;
+
+//system-colors
+$blue-1: #d6e1fb;
+$blue-2: #9ab6f4;
+$blue-3: #225fe8;
+$blue-4: #1241ac;
+$blue-5: #0b2766;
+$blue-6: #182230;
+
+$blue-green-1: #a7f5ff;
+$blue-green-2: #5bedff;
+$blue-green-3: #00acc1;
+$blue-green-4: #007f8e;
+$blue-green-5: #00515b;
+
+$green-1: #c4e8c6;
+$green-2: #8dd290;
+$green-3: #388e3c;
+$green-4: #2a692d;
+$green-5: #1b451d;
+$green-6: #68686e12;
+
+$yellow-green-1: #edf0c4;
+$yellow-green-2: #dfe494;
+$yellow-green-3: #c0ca33;
+$yellow-green-4: #929927;
+$yellow-green-5: #63681a;
+
+$yellow-1: #fff5cc;
+$yellow-2: #feeb9a;
+$yellow-3: #fdd835;
+$yellow-4: #f2c602;
+$yellow-5: #b69402;
+
+$yellow-orange-1: #ffeab8;
+$yellow-orange-2: #ffd77a;
+$yellow-orange-3: #ffb300;
+$yellow-orange-4: #cc8f00;
+$yellow-orange-5: #996b00;
+
+$orange-1: #ffe4c3;
+$orange-2: #ffc781;
+$orange-3: #fb8c00;
+$orange-4: #b96700;
+$orange-5: #764200;
+
+$red-orange-1: #fde4dc;
+$red-orange-2: #fab39c;
+$red-orange-3: #f4511e;
+$red-orange-4: #c6370a;
+$red-orange-5: #872507;
+
+$red-1: #fad5d5;
+$red-2: #f29696;
+$red-3: #dd1c1c;
+$red-4: #9e1414;
+$red-5: #5e0c0c;
+
+$red-violet-1: #fad5e4;
+$red-violet-2: #f18cb4;
+$red-violet-3: #c2185b;
+$red-violet-4: #8c1141;
+$red-violet-5: #550b28;
+
+$violet-1: #f0dcf8;
+$violet-2: #cf8fea;
+$violet-3: #7b1fa2;
+$violet-4: #54156f;
+$violet-5: #2d0b3b;
+
+$blue-violet-1: #d4caf2;
+$blue-violet-2: #9e88e2;
+$blue-violet-3: #4527a0;
+$blue-violet-4: #351e7b;
+$blue-violet-5: #251556;
+
+@mixin brand-color-pallet {
+  --accent-1: #{$accent-1};
+  --accent-2: #{$accent-2};
+  --accent-3: #{$accent-3};
+}
+
+@mixin neutral-colors {
+  --black: #{$black};
+  --white: #{$white};
+}
+
+@mixin gray-color-pallet {
+  --gray-1: #{$gray-1};
+  --gray-2: #{$gray-2};
+  --gray-3: #{$gray-3};
+  --gray-4: #{$gray-4};
+  --gray-5: #{$gray-5};
+  --gray-6: #{$gray-6};
+  --gray-7: #{$gray-7};
+  --gray-8: #{$gray-8};
+  --gray-9: #{$gray-9};
+  --gray-10: #{$gray-10};
+}
+
+@mixin system-color-pallet {
+  --blue-1: #{$blue-1};
+  --blue-2: #{$blue-2};
+  --blue-3: #{$blue-3};
+  --blue-4: #{$blue-4};
+  --blue-5: #{$blue-5};
+  --blue-6: #{$blue-6};
+
+  --blue-green-1: #{$blue-green-1};
+  --blue-green-2: #{$blue-green-2};
+  --blue-green-3: #{$blue-green-3};
+  --blue-green-4: #{$blue-green-4};
+  --blue-green-5: #{$blue-green-5};
+
+  --green-1: #{$green-1};
+  --green-2: #{$green-2};
+  --green-3: #{$green-3};
+  --green-4: #{$green-4};
+  --green-5: #{$green-5};
+  --green-6: #{$green-6};
+
+  --yellow-green-1: #{$yellow-green-1};
+  --yellow-green-2: #{$yellow-green-2};
+  --yellow-green-3: #{$yellow-green-3};
+  --yellow-green-4: #{$yellow-green-4};
+  --yellow-green-5: #{$yellow-green-5};
+
+  --yellow-1: #{$yellow-1};
+  --yellow-2: #{$yellow-2};
+  --yellow-3: #{$yellow-3};
+  --yellow-4: #{$yellow-4};
+  --yellow-5: #{$yellow-5};
+
+  --yellow-orange-1: #{$yellow-orange-1};
+  --yellow-orange-2: #{$yellow-orange-2};
+  --yellow-orange-3: #{$yellow-orange-3};
+  --yellow-orange-4: #{$yellow-orange-4};
+  --yellow-orange-5: #{$yellow-orange-5};
+
+  --orange-1: #{$orange-1};
+  --orange-2: #{$orange-2};
+  --orange-3: #{$orange-3};
+  --orange-4: #{$orange-4};
+  --orange-5: #{$orange-5};
+
+  --red-orange-1: #{$red-orange-1};
+  --red-orange-2: #{$red-orange-2};
+  --red-orange-3: #{$red-orange-3};
+  --red-orange-4: #{$red-orange-4};
+  --red-orange-5: #{$red-orange-5};
+
+  --red-1: #{$red-1};
+  --red-2: #{$red-2};
+  --red-3: #{$red-3};
+  --red-4: #{$red-4};
+  --red-5: #{$red-5};
+
+  --red-violet-1: #{$red-violet-1};
+  --red-violet-2: #{$red-violet-2};
+  --red-violet-3: #{$red-violet-3};
+  --red-violet-4: #{$red-violet-4};
+  --red-violet-5: #{$red-violet-5};
+
+  --violet-1: #{$violet-1};
+  --violet-2: #{$violet-2};
+  --violet-3: #{$violet-3};
+  --violet-4: #{$violet-4};
+  --violet-5: #{$violet-5};
+
+  --blue-violet-1: #{$blue-violet-1};
+  --blue-violet-2: #{$blue-violet-2};
+  --blue-violet-3: #{$blue-violet-3};
+  --blue-violet-4: #{$blue-violet-4};
+  --blue-violet-5: #{$blue-violet-5};
+}
+
+@mixin feedback-color-pallet {
+  --info: var(--blue-3);
+  --success: var(--green-3);
+  --warning: var(--yellow-3);
+  --error: var(--red-3);
+}
+
+@mixin severity-color-pallet {
+  --critical: var(--red-violet-5);
+  --bad: var(--red-3);
+  --poor: var(--orange-3);
+  --fair: var(--yellow-3);
+  --good: var(--yellow-green-3);
+  --excellent: var(--green-3);
+}
+
+@mixin colors-palette-dark-theme() {
+  --app-backgroung-color: color-mix(in srgb, var(--white), var(--blue-6) 97%);
+  --positive: color-mix(in srgb, var(--negative), var(--blue-6) 93%);
+  --negative: var(--gray-1);
+  --emphasis-primary: var(--gray-2);
+  --emphasis-secondary: #{darken($white, 20%)};
+  --emphasis-tertiary: #{darken($white, 40%)};
+  --emphasis-quaternary: #{darken($white, 60%)};
+  --border-color: color-mix(in srgb, var(--emphasis-quaternary) 70%, transparent);
+}
+
+@mixin colors-palette-light-theme() {
+  --app-backgroung-color: var(--white);
+  --positive: var(--gray-1);
+  --negative: var(--black);
+  --emphasis-primary: var(--gray-10);
+  --emphasis-secondary: #{lighten($gray-10, 20%)};
+  --emphasis-tertiary: #{lighten($gray-10, 40%)};
+  --emphasis-quaternary: #{lighten($gray-10, 60%)};
+  --border-color: color-mix(in srgb, var(--emphasis-quaternary) 70%, transparent);
+}

@@ -1,0 +1,24 @@
+.ui-label {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  color: var(--emphasis-primary);
+
+  &--error {
+    color: var(--error);
+  }
+
+  &--disabled {
+    opacity: 0.4;
+  }
+
+  &--small {
+    font-size: 14px;
+  }
+
+  &__end-adornment {
+    margin-left: 6px;
+    margin-bottom: 3px;
+  }
+}

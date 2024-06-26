@@ -1,0 +1,16 @@
+.ui-hint {
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--emphasis-secondary);
+  white-space: pre-line;
+  display: block;
+
+  &--error {
+    color: var(--error);
+  }
+
+  &--info {
+    color: var(--info);
+  }
+}

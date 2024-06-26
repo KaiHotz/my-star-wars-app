@@ -1,0 +1,65 @@
+@import './ui-kit/styles/index.scss';
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html[data-theme='light'] {
+  @include colors-palette-light-theme();
+}
+
+html[data-theme='dark'] {
+  @include colors-palette-dark-theme();
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  font-family: var(--font-primary);
+  color: var(--emphasis-primary);
+}
+
+.highcharts-background {
+  fill: var(--app-backgroung-color);
+}

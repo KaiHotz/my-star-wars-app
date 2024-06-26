@@ -1,0 +1,29 @@
+@mixin font-faces() {
+  @font-face {
+    font-family: 'D-DIN';
+    src:
+      url('../fonts/DDin/ddin.otf') format('otf'),
+      url('../fonts/DDin/ddinbold.otf') format('otf'),
+      url('../fonts/DDin/ddinitalic.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Roboto-Condensed';
+    src:
+      url('../fonts/RobotoCondensed/robotocondensedbold.ttf') format('ttf'),
+      url('../fonts/RobotoCondensed/robotocondensedbolditalic.ttf') format('ttf'),
+      url('../fonts/RobotoCondensed/robotocondenseditalic.ttf') format('ttf'),
+      url('../fonts/RobotoCondensed/robotocondensedlight.ttf') format('ttf'),
+      url('../fonts/RobotoCondensed/robotocondensedlightitalic.ttf') format('ttf'),
+      url('../fonts/RobotoCondensed/robotocondensedregular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+$font-primary: 'D-DIN', sans-serif;
+$font-secondary: 'Roboto-Condensed', sans-serif;

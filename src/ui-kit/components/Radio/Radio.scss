@@ -1,0 +1,11 @@
+.ui-radio {
+  &--inline {
+    display: flex;
+  }
+
+  &__validation-wrapper {
+    display: flex;
+    padding: 5px 2px;
+    min-height: 18px;
+  }
+}
