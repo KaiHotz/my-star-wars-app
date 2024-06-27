@@ -13,11 +13,11 @@ import './Category.scss';
 
 export const Category: FC = () => {
   const { formatMessage: fm } = useIntl();
-  const { recource } = useParams();
+  const { category } = useParams();
   const [entryToEdit, setEntryToEdit] = useState<TCategory | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  const { data, fetchNextPage, isLoading, isFetching, hasNextPage } = useCategoryList({ recource });
+  const { data, fetchNextPage, isLoading, isFetching, hasNextPage } = useCategoryList(category);
 
   const onEdit = useCallback((data: TCategory) => {
     setEntryToEdit(data);
@@ -29,7 +29,7 @@ export const Category: FC = () => {
   }, []);
 
   const isGrid = viewMode === 'grid';
-  const isPerson = recource === 'people';
+  const isPerson = category === 'people';
   const inProgress = isLoading || isFetching;
 
   return (

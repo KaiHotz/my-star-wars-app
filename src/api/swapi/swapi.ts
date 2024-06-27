@@ -8,8 +8,8 @@ export const getResources = async (): Promise<IResources> => {
   return data;
 };
 
-export const getCategoryList = async ({ recource, pageParam, signal }: ICategoryListParams): Promise<ICategoryList> => {
-  const { data } = await httpClient.get<ICategoryList>(`/api/${recource}/?page=${pageParam}`, { signal });
+export const getCategoryList = async ({ category, pageParam, signal }: ICategoryListParams): Promise<ICategoryList> => {
+  const { data } = await httpClient.get<ICategoryList>(`/api/${category}/?page=${pageParam}`, { signal });
 
   return { ...data, results: data.results.map((item) => ({ ...item, id: uuidv4() })) };
 };

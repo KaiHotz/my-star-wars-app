@@ -10,10 +10,10 @@ export const useSearchAll = (search: string) => {
   });
 };
 
-export const useCategoryList = ({ recource }: { recource?: string }) => {
+export const useCategoryList = (category?: string) => {
   return useInfiniteQuery({
-    queryKey: [recource],
-    queryFn: async ({ pageParam, signal }) => await getCategoryList({ recource, pageParam, signal }),
+    queryKey: [category],
+    queryFn: async ({ pageParam, signal }) => await getCategoryList({ category, pageParam, signal }),
     initialPageParam: 1,
     getNextPageParam: (lastPage, _allPages, lastPageParam) => {
       if (!lastPage.next) {

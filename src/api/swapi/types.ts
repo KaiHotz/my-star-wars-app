@@ -106,7 +106,7 @@ export interface IResources {
 export type TCategories = keyof IResources;
 
 export interface ICategoryListParams {
-  recource?: string;
+  category?: string;
   pageParam: number;
   signal: AbortSignal;
 }

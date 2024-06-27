@@ -11,14 +11,14 @@ import './Header.scss';
 export const Header: FC = () => {
   const { formatMessage: fm } = useIntl();
   const { theme, setTheme } = useTheme();
-  const { recource } = useParams();
+  const { category } = useParams();
 
   const onChangeTheme = useCallback(() => {
     const themeValue = theme === EThemeOptions.LIGHT ? EThemeOptions.DARK : EThemeOptions.LIGHT;
     setTheme(themeValue);
   }, [setTheme, theme]);
 
-  const pageInfo = recource || 'search';
+  const pageInfo = category || 'search';
 
   return (
     <header className="header">
