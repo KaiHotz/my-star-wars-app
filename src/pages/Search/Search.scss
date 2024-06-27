@@ -1,3 +1,12 @@
 .search {
-  padding: 20px;
+  padding: 15px 10px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 780px) {
+    width: 70%;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 50%;
+  }
 }

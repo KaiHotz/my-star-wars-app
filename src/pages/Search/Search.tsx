@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useCallback, useState } from 'react';
-import { ISearch, useSearchAll } from 'src/api';
+import { TSearch, useSearchAll } from 'src/api';
 import { useNavigate } from 'react-router-dom';
 import { useDebounce } from 'src/ui-kit';
 import { SearchField } from 'src/components/SearchField';
@@ -13,12 +13,12 @@ const Search: FC = () => {
   const { data, isLoading, isFetching } = useSearchAll(debouncedSearch);
 
   const handleSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value), []);
-  const handleViewAll = useCallback((resource: string) => navigate(`${routePath.list}/${resource}`), [navigate]);
+  const handleViewAll = useCallback((category: string) => navigate(`${routePath.category}/${category}`), [navigate]);
   const inProgress = isLoading || isFetching;
 
   return (
     <div className="search">
-      <SearchField<ISearch>
+      <SearchField<TSearch>
         onChange={handleSearch}
         value={search}
         data={data}

@@ -5,5 +5,4 @@ export * from './Hint';
 export * from './Input';
 export * from './Label';
 export * from './Modal';
-export * from './Radio';
 export * from './Spinner';

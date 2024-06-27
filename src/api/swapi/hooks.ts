@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
-import { getList, getSearchAll } from './swapi';
+import { getCategoryList, getSearchAll } from './swapi';
 
 export const useSearchAll = (search: string) => {
   return useQuery({
@@ -10,10 +10,10 @@ export const useSearchAll = (search: string) => {
   });
 };
 
-export const useList = ({ recource }: { recource?: string }) => {
+export const useCategoryList = ({ recource }: { recource?: string }) => {
   return useInfiniteQuery({
     queryKey: [recource],
-    queryFn: async ({ pageParam, signal }) => await getList({ recource, pageParam, signal }),
+    queryFn: async ({ pageParam, signal }) => await getCategoryList({ recource, pageParam, signal }),
     initialPageParam: 1,
     getNextPageParam: (lastPage, _allPages, lastPageParam) => {
       if (!lastPage.next) {

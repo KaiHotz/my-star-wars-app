@@ -90,7 +90,7 @@ export interface IVehicle extends ICommonProps {
   pilots: string[];
 }
 
-export type TCategory = IFilm | IPerson | IPlanet | ISpecie | IStarships | IVehicle;
+export type TCategory = IFilm & IPerson & IPlanet & ISpecie & IStarships & IVehicle;
 
 export type TResults = Array<TCategory>;
 
@@ -103,24 +103,19 @@ export interface IResources {
   vehicles: string;
 }
 
-export interface IListparams {
+export type TCategories = keyof IResources;
+
+export interface ICategoryListParams {
   recource?: string;
   pageParam: number;
   signal: AbortSignal;
 }
 
-export interface IList {
+export interface ICategoryList {
   count: number;
   next: string;
   previous: string;
   results: TResults;
 }
 
-export interface ISearch {
-  films: IFilm[];
-  people: IPerson[];
-  planets: IPlanet[];
-  species: ISpecie[];
-  starships: IStarships[];
-  vehicles: IVehicle[];
-}
+export type TSearch = Record<TCategories, TResults>;

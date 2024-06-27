@@ -31,8 +31,8 @@
       background-color: var(--orange-3);
     }
     &:active {
-      background-color: var(--red-orange-3);
-      border-color: var(--red-orange-3);
+      background-color: var(--bad);
+      border-color: var(--bad);
     }
   }
 
@@ -75,13 +75,16 @@
   }
 
   &--danger {
-    color: var(--red-orange-3);
+    color: var(--bad);
     background-color: transparent;
+    border-color: var(--bad);
     &:hover {
-      background-color: transparent;
+      background-color: var(--bad);
+      color: var(--white);
     }
     &:active {
-      border-color: var(--red-orange-3);
+      border-color: var(--bad);
+      color: var(--emphasis-tertiary);
     }
     &.ui-btn--disabled {
       background-color: transparent;

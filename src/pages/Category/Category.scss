@@ -1,4 +1,5 @@
-.list {
+.category {
+  padding: 0 10px;
   &__header {
     position: sticky;
     background-color: var(--app-backgroung-color);
@@ -25,5 +26,17 @@
     justify-content: center;
     bottom: 0;
     padding: 15px;
+  }
+
+  &__body,
+  &__footer {
+    margin: 0 auto;
+    @media screen and (min-width: 780px) {
+      width: 90%;
+    }
+
+    @media screen and (min-width: 1440px) {
+      width: 80%;
+    }
   }
 }

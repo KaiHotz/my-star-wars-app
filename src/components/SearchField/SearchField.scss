@@ -7,7 +7,7 @@
   background-color: var(--positive);
   overflow: scroll;
   min-height: 50px;
-  max-height: 600px;
+  max-height: calc(100vh - 120px);
   &--no-data {
     justify-content: center;
     align-items: center;

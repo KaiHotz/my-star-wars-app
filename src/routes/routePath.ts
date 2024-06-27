@@ -1,4 +1,4 @@
 export const routePath = {
   search: '/',
-  list: '/list',
+  category: '/category',
 };
