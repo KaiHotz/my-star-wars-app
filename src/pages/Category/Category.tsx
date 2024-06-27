@@ -24,6 +24,7 @@ export const Category: FC = () => {
   }, []);
 
   const handleDelete = useCallback((id: TCategory['id']) => {
+    // eslint-disable-next-line no-console
     console.log({ id });
   }, []);
 
