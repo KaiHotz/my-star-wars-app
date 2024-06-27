@@ -1,0 +1,46 @@
+.header {
+  height: 40px;
+  background-color: var(--positive);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--emphasis-primary);
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-gap: 0 10px;
+  font-family: var(--font-star-wars);
+
+  &--left,
+  &--right,
+  &--center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &--left {
+    justify-content: flex-start;
+    padding-left: 15px;
+    white-space: nowrap;
+  }
+
+  &--right {
+    justify-content: flex-end;
+    padding-right: 15px;
+  }
+
+  &--center {
+    justify-content: center;
+  }
+
+  &__logo {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--emphasis-primary);
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}

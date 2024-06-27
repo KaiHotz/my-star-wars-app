@@ -1,10 +1,7 @@
 @mixin font-faces() {
   @font-face {
     font-family: 'D-DIN';
-    src:
-      url('../fonts/DDin/ddin.otf') format('otf'),
-      url('../fonts/DDin/ddinbold.otf') format('otf'),
-      url('../fonts/DDin/ddinitalic.otf') format('otf');
+    src: url('../fonts/DDin/ddin.otf'), url('../fonts/DDin/ddinbold.otf'), url('../fonts/DDin/ddinitalic.otf');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -12,18 +9,21 @@
 
   @font-face {
     font-family: 'Roboto-Condensed';
-    src:
-      url('../fonts/RobotoCondensed/robotocondensedbold.ttf') format('ttf'),
-      url('../fonts/RobotoCondensed/robotocondensedbolditalic.ttf') format('ttf'),
-      url('../fonts/RobotoCondensed/robotocondenseditalic.ttf') format('ttf'),
-      url('../fonts/RobotoCondensed/robotocondensedlight.ttf') format('ttf'),
-      url('../fonts/RobotoCondensed/robotocondensedlightitalic.ttf') format('ttf'),
-      url('../fonts/RobotoCondensed/robotocondensedregular.ttf') format('ttf');
+    src: url('../fonts/RobotoCondensed/robotocondensedbold.ttf'), url('../fonts/RobotoCondensed/robotocondensedbolditalic.ttf'),
+      url('../fonts/RobotoCondensed/robotocondenseditalic.ttf'), url('../fonts/RobotoCondensed/robotocondensedlight.ttf'),
+      url('../fonts/RobotoCondensed/robotocondensedlightitalic.ttf'), url('../fonts/RobotoCondensed/robotocondensedregular.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'ST-Jedise';
+    src: url('../fonts/STjedise/stjedise.ttf');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
   }
 }
-
 $font-primary: 'D-DIN', sans-serif;
 $font-secondary: 'Roboto-Condensed', sans-serif;
+$font-star-wars: 'ST-Jedise', sans-serif;

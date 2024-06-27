@@ -32,6 +32,7 @@ module.exports = {
     'newline-before-return': 'error',
     'no-console': 'warn',
     'no-debugger': 'warn',
+    'no-unused-vars': 'warn',
     'no-warning-comments': 'warn',
     'object-shorthand': 'error',
     'no-param-reassign': 'off',
@@ -110,6 +111,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
       },
       rules: {
+        '@typescript-eslint/no-unused-vars': 'warn',
         '@typescript-eslint/no-misused-promises': 'off',
         '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/no-unsafe-call': 'off',

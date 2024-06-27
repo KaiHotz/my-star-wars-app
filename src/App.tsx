@@ -1,32 +1,43 @@
-import { useState } from 'react';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import reactLogo from './assets/react.svg';
+import { Spinner } from './ui-kit';
+import { MainLayout } from './components/Layouts';
+import { routePath } from './routes';
 
-import viteLogo from '/vite.svg';
-import './App.css';
+const List = lazy(() => import('./pages/List'));
+const Search = lazy(() => import('./pages/Search'));
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    <div className="app">
+      <BrowserRouter>
+        <Routes>
+          <Route path={routePath.search} element={<MainLayout />}>
+            <Route
+              index
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Search />
+                </Suspense>
+              }
+            />
+          </Route>
+          <Route path={routePath.list} element={<MainLayout />}>
+            <Route
+              index
+              path=":recource"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <List />
+                </Suspense>
+              }
+            />
+          </Route>
+          <Route path="*" element={<Navigate to={routePath.search} />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

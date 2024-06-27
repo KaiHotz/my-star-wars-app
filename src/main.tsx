@@ -10,7 +10,7 @@ import './main.scss';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      gcTime: 0,
+      staleTime: Infinity,
       refetchOnWindowFocus: false,
       retry: false,
     },
@@ -18,12 +18,10 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} position="bottom" buttonPosition="bottom-right" />
-      <ThemeProvider name="star-wars">
-        <App />
-      </ThemeProvider>
-    </QueryClientProvider>
-  </React.StrictMode>,
+  <QueryClientProvider client={queryClient}>
+    <ReactQueryDevtools initialIsOpen={false} position="bottom" buttonPosition="bottom-right" />
+    <ThemeProvider name="star-wars">
+      <App />
+    </ThemeProvider>
+  </QueryClientProvider>,
 );

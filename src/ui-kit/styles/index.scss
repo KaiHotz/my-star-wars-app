@@ -6,6 +6,7 @@
 :root {
   --font-primary: #{$font-primary};
   --font-secondary: #{$font-secondary};
+  --font-star-wars: #{$font-star-wars};
 
   //colors
   @include system-color-pallet();

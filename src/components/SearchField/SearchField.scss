@@ -1,0 +1,45 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--positive);
+  overflow: scroll;
+  min-height: 50px;
+  max-height: 600px;
+  &--no-data {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  &--loading {
+    padding: 20px;
+  }
+
+  &__title {
+    text-transform: capitalize;
+    font-family: var(--font-star-wars);
+    color: var(--accent-1);
+    padding: 0 10px 3px;
+    border-radius: 6px;
+    background-color: var(--gray-10);
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0 15px 0 10px;
+    margin: 10px 0;
+  }
+
+  &__list-item {
+    padding: 3px 0;
+    display: flex;
+  }
+
+  &__view-all {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

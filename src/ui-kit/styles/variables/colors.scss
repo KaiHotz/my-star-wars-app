@@ -1,7 +1,8 @@
 //brand-colors
-$accent-1: #e8ab22;
-$accent-2: #e19526;
-$accent-3: #d57a27;
+$accent-1: #ffe81f;
+$accent-2: #e8ab22;
+$accent-3: #e19526;
+$accent-4: #d57a27;
 
 //neutral-colors
 $black: #000000;
@@ -98,6 +99,7 @@ $blue-violet-5: #251556;
   --accent-1: #{$accent-1};
   --accent-2: #{$accent-2};
   --accent-3: #{$accent-3};
+  --accent-4: #{$accent-4};
 }
 
 @mixin neutral-colors {
