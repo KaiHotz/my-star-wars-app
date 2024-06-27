@@ -5,7 +5,7 @@ import { Spinner } from './ui-kit';
 import { MainLayout } from './components/Layouts';
 import { routePath } from './routes';
 
-const List = lazy(() => import('./pages/List'));
+const Category = lazy(() => import('./pages/Category'));
 const Search = lazy(() => import('./pages/Search'));
 
 function App() {
@@ -23,13 +23,13 @@ function App() {
               }
             />
           </Route>
-          <Route path={routePath.list} element={<MainLayout />}>
+          <Route path={routePath.category} element={<MainLayout />}>
             <Route
               index
               path=":recource"
               element={
                 <Suspense fallback={<Spinner />}>
-                  <List />
+                  <Category />
                 </Suspense>
               }
             />
