@@ -50,7 +50,7 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
                   <ul className="results__list">
                     {Array.isArray(value) ? (
                       value.map((item: { name?: string; title?: string }) => (
-                        <li key={item.name} className="results__list-item">
+                        <li key={item.name || item.title} className="results__list-item">
                           {item.name || item.title}
                         </li>
                       ))

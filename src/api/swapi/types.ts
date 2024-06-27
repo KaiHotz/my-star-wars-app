@@ -1,7 +1,8 @@
 export interface ICommonProps {
   title?: string;
   name?: string;
-  films: string[];
+  id: string;
+  films?: string[];
   url: string;
   created: string;
   edited: string;
@@ -89,6 +90,10 @@ export interface IVehicle extends ICommonProps {
   pilots: string[];
 }
 
+export type TCategory = IFilm | IPerson | IPlanet | ISpecie | IStarships | IVehicle;
+
+export type TResults = Array<TCategory>;
+
 export interface IResources {
   films: string;
   people: string;
@@ -98,17 +103,17 @@ export interface IResources {
   vehicles: string;
 }
 
-export interface TListparams {
+export interface IListparams {
   recource?: string;
   pageParam: number;
   signal: AbortSignal;
 }
 
-export interface TList {
+export interface IList {
   count: number;
   next: string;
   previous: string;
-  results: IFilm[] | IPerson[] | IPlanet[] | ISpecie[] | IStarships[] | IVehicle[];
+  results: TResults;
 }
 
 export interface ISearch {

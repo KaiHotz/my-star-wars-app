@@ -1,16 +1,17 @@
-import { IResources, ISearch, TList, TListparams } from './types';
-import { httpClient } from '../httpClient';
+import { v4 as uuidv4 } from 'uuid';
 
+import { IList, IListparams, IResources, ISearch } from './types';
+import { httpClient } from '../httpClient';
 export const getResources = async (): Promise<IResources> => {
   const { data } = await httpClient.get<IResources>('/api');
 
   return data;
 };
 
-export const getList = async ({ recource, pageParam, signal }: TListparams): Promise<TList> => {
-  const { data } = await httpClient.get<TList>(`/api/${recource}/?page=${pageParam}`, { signal });
+export const getList = async ({ recource, pageParam, signal }: IListparams): Promise<IList> => {
+  const { data } = await httpClient.get<IList>(`/api/${recource}/?page=${pageParam}`, { signal });
 
-  return data;
+  return { ...data, results: data.results.map((item) => ({ ...item, id: uuidv4() })) };
 };
 
 export const getSearchAll = async (search: string, signal: AbortSignal): Promise<ISearch> => {
