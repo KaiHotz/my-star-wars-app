@@ -100,6 +100,7 @@ export interface IResources {
 
 export interface TListparams {
   recource?: string;
+  pageParam: number;
   signal: AbortSignal;
 }
 

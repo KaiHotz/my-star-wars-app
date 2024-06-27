@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import cx from 'clsx';
 import { useList } from 'src/api';
-import { Button } from 'src/ui-kit';
+import { Button, Spinner } from 'src/ui-kit';
 import { FaGrip, FaList } from 'react-icons/fa6';
 import { Card } from 'src/components/Card';
 import './List.scss';
@@ -11,11 +11,11 @@ export const List: FC = () => {
   const { recource } = useParams();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-  const { data, isLoading, isFetching } = useList({ recource });
+  const { data, fetchNextPage, isLoading, isFetching, hasNextPage } = useList({ recource });
 
   const isGrid = viewMode === 'grid';
 
-  console.log({ data, isLoading, isFetching });
+  const inProgress = isLoading || isFetching;
 
   return (
     <div className="list">
@@ -27,7 +27,14 @@ export const List: FC = () => {
         />
       </div>
       <div className={cx(`list__body, list__body--${viewMode}`)}>
-        {data?.results.map((item) => <Card key={item.name || item.title} data={item} variant={viewMode} />)}
+        {data?.pages.map(({ results }) =>
+          results.map((item) => <Card key={item.name} data={item} variant={viewMode} />),
+        )}
+      </div>
+      <div className="list__footer">
+        <Button variant="secondary" onClick={() => fetchNextPage()} disabled={!hasNextPage || inProgress}>
+          {inProgress ? <Spinner size={16} /> : 'Load More'}
+        </Button>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDebounce } from 'src/ui-kit';
 import { SearchField } from 'src/components/SearchField';
 import { routePath } from 'src/routes';
-
+import './Search.scss';
 const Search: FC = () => {
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search, 200);

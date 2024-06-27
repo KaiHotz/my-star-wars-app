@@ -21,10 +21,10 @@ export const Header: FC = () => {
     <header className="header">
       <div className="header--left">
         <Link to={routePath.search} className="header__logo">
-          {`Star wars - ${pageInfo}`}
+          Star Wars
         </Link>
       </div>
-      <div className="header--center" />
+      <div className="header--center">{`${pageInfo}`}</div>
       <div className="header--right">
         <div className="header__theme-toggle">
           <Button

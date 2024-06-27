@@ -7,8 +7,8 @@ export const getResources = async (): Promise<IResources> => {
   return data;
 };
 
-export const getList = async ({ recource, signal }: TListparams): Promise<TList> => {
-  const { data } = await httpClient.get<TList>(`/api/${recource}`, { signal });
+export const getList = async ({ recource, pageParam, signal }: TListparams): Promise<TList> => {
+  const { data } = await httpClient.get<TList>(`/api/${recource}/?page=${pageParam}`, { signal });
 
   return data;
 };
