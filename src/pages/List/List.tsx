@@ -1,13 +1,16 @@
 import { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 import cx from 'clsx';
 import { useList } from 'src/api';
 import { Button, Spinner } from 'src/ui-kit';
 import { FaGrip, FaList } from 'react-icons/fa6';
 import { Card } from 'src/components/Card';
+import { messages } from 'src/dictionary';
 import './List.scss';
 
 export const List: FC = () => {
+  const { formatMessage: fm } = useIntl();
   const { recource } = useParams();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
@@ -33,7 +36,7 @@ export const List: FC = () => {
       </div>
       <div className="list__footer">
         <Button variant="secondary" onClick={() => fetchNextPage()} disabled={!hasNextPage || inProgress}>
-          {inProgress ? <Spinner size={16} /> : 'Load More'}
+          {inProgress ? <Spinner size={16} /> : fm(messages.loadMore)}
         </Button>
       </div>
     </div>

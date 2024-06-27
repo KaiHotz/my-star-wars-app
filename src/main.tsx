@@ -1,5 +1,5 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -20,8 +20,20 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={queryClient}>
     <ReactQueryDevtools initialIsOpen={false} position="bottom" buttonPosition="bottom-right" />
-    <ThemeProvider name="star-wars">
-      <App />
-    </ThemeProvider>
+    <IntlProvider
+      locale="en"
+      formats={{
+        date: {
+          'month': { year: 'numeric', month: 'long' },
+          'long': { year: 'numeric', month: 'long', day: 'numeric' },
+          'short': { year: 'numeric', month: 'short', day: 'numeric' },
+          'dateTime': { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' },
+        },
+      }}
+    >
+      <ThemeProvider name="star-wars">
+        <App />
+      </ThemeProvider>
+    </IntlProvider>
   </QueryClientProvider>,
 );

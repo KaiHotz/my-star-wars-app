@@ -1,8 +1,10 @@
 import { ChangeEvent, ReactNode } from 'react';
 import { isEmpty } from 'lodash';
+import { useIntl } from 'react-intl';
 import { Button, Input, Spinner } from 'src/ui-kit';
 import { FaSistrix } from 'react-icons/fa6';
 import cx from 'clsx';
+import { messages } from 'src/dictionary';
 import './SearchField.scss';
 
 export interface ISearchFieldProps<T extends NonNullable<unknown> | ReactNode> {
@@ -20,12 +22,18 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
   onChange,
   onViewAll,
 }: ISearchFieldProps<T>) => {
+  const { formatMessage: fm } = useIntl();
   const showResults = isLoading || data;
   const noData = isEmpty(data) && !isLoading;
 
   return (
     <>
-      <Input value={value} onChange={onChange} placeholder="Search..." startAdornment={<FaSistrix />} />
+      <Input
+        value={value}
+        onChange={onChange}
+        placeholder={fm(messages.searchPlaceholder)}
+        startAdornment={<FaSistrix />}
+      />
       {showResults && (
         <div
           className={cx('results', {
@@ -38,7 +46,7 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
             Object.entries(data).map(([key, value]) => {
               return (
                 <div key={key}>
-                  <div className="results__title">{key}</div>
+                  <div className="results__title">{fm(messages[key as keyof typeof messages]) || key}</div>
                   <ul className="results__list">
                     {Array.isArray(value) ? (
                       value.map((item: { name?: string; title?: string }) => (
@@ -52,7 +60,7 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
                     {onViewAll && (
                       <div className="results__view-all">
                         <Button variant="ghost" onClick={() => onViewAll(key)}>
-                          View all
+                          {fm(messages.viewAll)}
                         </Button>
                       </div>
                     )}
@@ -60,7 +68,7 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
                 </div>
               );
             })}
-          {noData && <div>Oops!! No results where found for your search</div>}
+          {noData && <div>{fm(messages.noResults)}</div>}
         </div>
       )}
     </>
