@@ -15,10 +15,15 @@ export const useCategoryList = (category?: string) => {
   return useInfiniteQuery({
     queryKey: [category],
     queryFn: async ({ pageParam, signal }) => await getCategoryList({ category, pageParam, signal }),
-    initialPageParam: 1,
+    initialPageParam: 0,
     getNextPageParam: (lastPage, _allPages, lastPageParam) => {
       if (!lastPage.next) {
         return undefined;
+      }
+
+      if (lastPageParam === 0) {
+        // since initialy we load 2 pages at once the next page will be 3 therefore we need to return 2
+        return 2;
       }
 
       return lastPageParam + 1;
