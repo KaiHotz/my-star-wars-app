@@ -218,11 +218,11 @@ $blue-violet-5: #251556;
   --app-backgroung-color: var(--blue-7);
   --positive: color-mix(in srgb, var(--black), var(--blue-6) 93%);
   --negative: var(--gray-2);
-  --emphasis-primary: var(--gray-2);
-  --emphasis-secondary: #{darken($white, 20%)};
-  --emphasis-tertiary: #{darken($white, 40%)};
-  --emphasis-quaternary: #{darken($white, 60%)};
-  --border-color: color-mix(in srgb, var(--emphasis-quaternary) 70%, transparent);
+  --emphasis-primary: var(--gray-3);
+  --emphasis-secondary: #{darken($gray-3, 20%)};
+  --emphasis-tertiary: #{darken($gray-3, 40%)};
+  --emphasis-quaternary: #{darken($gray-3, 60%)};
+  --border-color: color-mix(in srgb, darken($gray-3, 60%) 70%, transparent);
 }
 
 @mixin colors-palette-light-theme() {
@@ -233,5 +233,5 @@ $blue-violet-5: #251556;
   --emphasis-secondary: #{lighten($gray-10, 20%)};
   --emphasis-tertiary: #{lighten($gray-10, 40%)};
   --emphasis-quaternary: #{lighten($gray-10, 60%)};
-  --border-color: color-mix(in srgb, var(--emphasis-quaternary) 70%, transparent);
+  --border-color: color-mix(in srgb, lighten($gray-10, 60%) 70%, transparent);
 }
