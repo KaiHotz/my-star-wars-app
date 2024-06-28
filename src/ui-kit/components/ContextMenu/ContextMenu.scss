@@ -1,0 +1,53 @@
+@import 'src/ui-kit/styles/mixins/index.scss';
+
+.ui-context-menu {
+  min-width: 200px;
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1);
+
+  &__item {
+    color: currentColor;
+    width: 100%;
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: none;
+    outline: 0;
+    background: inherit;
+    cursor: pointer;
+    padding: 16px;
+
+    &--disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      background-color: var(--app-backgroung-color);
+      color: var(--white);
+      border-radius: 16px;
+    }
+  }
+  &__item-label {
+    color: var(--sky1);
+    user-select: none;
+    @include body4;
+  }
+
+  &__item-end-adornment {
+    height: 12px;
+    text-align: right;
+    display: inline-block;
+    margin-left: auto;
+    font-size: 14px;
+    color: currentColor;
+  }
+}

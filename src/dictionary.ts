@@ -7,7 +7,7 @@ export const messages = createDictionary('star-wars', {
   searchPlaceholder: 'Search...',
   viewAll: 'View all',
   loadMore: 'Load more',
-
+  categories: 'Categories',
   edit: 'Edit',
   delete: 'Delete',
   submit: 'Submit',

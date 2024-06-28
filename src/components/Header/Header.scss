@@ -31,16 +31,24 @@
     justify-content: center;
   }
 
+  &__link {
+    color: var(--emphasis-primary);
+    text-decoration: none;
+    font-size: 12px;
+    &:active,
+    &:visited {
+      color: var(--emphasis-primary);
+    }
+  }
+
   &__logo {
     width: auto;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--emphasis-primary);
     font-size: 1.3rem;
     font-weight: bold;
     text-transform: uppercase;
-    text-decoration: none;
   }
 }
