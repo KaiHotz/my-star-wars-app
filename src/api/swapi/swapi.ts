@@ -28,29 +28,9 @@ export const getSearchAll = async (search: string, signal: AbortSignal): Promise
 };
 
 export const getCategoryList = async ({ category, pageParam, signal }: ICategoryListParams): Promise<ICategoryList> => {
-  if (pageParam === 0) {
-    // since the api does not support pagination we need to load 2 pages at once to retrun 20 items intially
-    const response = await Promise.allSettled([
-      httpClient.get<ICategoryList>(`/api/${category}/?page=1`, { signal }),
-      httpClient.get<ICategoryList>(`/api/${category}/?page=2`, { signal }),
-    ]);
+  const { data } = await httpClient.get<ICategoryList>(`/api/${category}/?page=${pageParam}`, { signal });
 
-    const fullfilled = response.filter((item) => item.status === 'fulfilled');
-
-    const newData = fullfilled.reduce((acc, item) => {
-      return {
-        ...acc,
-        ...item.value.data,
-        results: [...acc.value.data.results, ...item.value.data.results.map((item) => ({ ...item, id: uuidv4() }))],
-      };
-    });
-
-    return newData.value.data;
-  } else {
-    const { data } = await httpClient.get<ICategoryList>(`/api/${category}/?page=${pageParam}`, { signal });
-
-    return { ...data, results: data.results.map((item) => ({ ...item, id: uuidv4() })) };
-  }
+  return { ...data, results: data.results.map((item) => ({ ...item, id: uuidv4() })) };
 };
 
 export const updateCategoryItem = (data: Partial<TCategory>, queryData: InfiniteData<ICategoryList, unknown> | undefined) => {
