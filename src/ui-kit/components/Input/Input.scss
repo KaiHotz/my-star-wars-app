@@ -17,11 +17,11 @@
     background-color: inherit;
     background-clip: text;
     &::placeholder {
-      color: var(--emphasis-quaternary);
+      color: var(--emphasis-secondary);
     }
     &:hover,
     &:hover::placeholder {
-      color: var(--emphasis-secondary);
+      color: var(--emphasis-quaternary);
     }
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
