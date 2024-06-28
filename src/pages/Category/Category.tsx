@@ -95,6 +95,7 @@ export const Category: FC = () => {
                 key={item.id}
                 ref={isLast ? cardRef : undefined}
                 data={item}
+                searchTerm={search}
                 variant={viewMode}
                 onEdit={isPerson ? handleEntrytoEdit : undefined}
                 onDelte={hanldeDeleteItem}
