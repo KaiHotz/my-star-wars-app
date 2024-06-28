@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import react from '@vitejs/plugin-react';
 
@@ -17,10 +17,5 @@ export default defineConfig({
         replacement: resolve(__dirname, './src/ui-kit/styles/fonts'),
       },
     ],
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/setupTests.ts'],
   },
 });
