@@ -1,7 +1,7 @@
 {
   "name": "my-start-wars-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "repository": "https://github.com/KaiHotz/my-star-wars-app",
   "homepage": "https://KaiHotz.github.io/my-star-wars-app",
