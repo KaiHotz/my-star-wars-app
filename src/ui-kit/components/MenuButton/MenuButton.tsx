@@ -1,4 +1,4 @@
-import { FC, MouseEvent, PropsWithChildren, useCallback, useRef, useState } from 'react';
+import { FC, MouseEvent, useCallback, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
 import { FaChevronDown } from 'react-icons/fa6';
