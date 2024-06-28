@@ -7,21 +7,24 @@ import { routePath } from 'src/routes';
 import './Search.scss';
 
 const Search: FC = () => {
-  const [search, setSearch] = useState('');
-  const debouncedSearch = useDebounce(search, 200);
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearch = useDebounce(searchTerm, 200);
   const navigate = useNavigate();
 
   const { data, isLoading, isFetching } = useSearchAll(debouncedSearch);
 
-  const handleSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value), []);
-  const handleViewAll = useCallback((category: string) => navigate(`${routePath.category}/${category}`), [navigate]);
+  const handleSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value), []);
+  const handleViewAll = useCallback(
+    (category: string) => navigate(`${routePath.category}/${category}`, { state: { searchTerm } }),
+    [navigate, searchTerm],
+  );
   const inProgress = isLoading || isFetching;
 
   return (
     <div className="search">
       <SearchField<TSearch>
         onChange={handleSearch}
-        value={search}
+        value={searchTerm}
         data={data}
         isLoading={inProgress}
         onViewAll={handleViewAll}

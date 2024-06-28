@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useCallback, useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import cx from 'clsx';
 import { FaGrip, FaList, FaSistrix, FaXmark } from 'react-icons/fa6';
@@ -16,7 +16,8 @@ export const Category: FC = () => {
   const cardRef = useRef<HTMLDivElement>(null);
   const { formatMessage: fm } = useIntl();
   const { category } = useParams();
-  const [search, setSearch] = useState<string>('');
+  const { state } = useLocation();
+  const [search, setSearch] = useState<string>(state?.searchTerm || '');
   const [entryToEdit, setEntryToEdit] = useState<TCategory | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
@@ -61,6 +62,7 @@ export const Category: FC = () => {
   );
   const isGrid = viewMode === 'grid';
   const isPerson = category === 'people';
+  const hasReluts = !!filteredItems?.length;
   const inProgress = isLoading || isFetching || isUpdating || isDeleting;
 
   return (
@@ -104,9 +106,13 @@ export const Category: FC = () => {
           })}
         </div>
         <div className="category__footer">
-          <Button variant="secondary" onClick={() => fetchNextPage()} disabled={!hasNextPage || inProgress}>
-            {inProgress ? <Spinner size={16} /> : fm(messages.loadMore)}
-          </Button>
+          {hasReluts ? (
+            <Button variant="secondary" onClick={() => fetchNextPage()} disabled={!hasNextPage || inProgress}>
+              {inProgress ? <Spinner size={16} /> : fm(messages.loadMore)}
+            </Button>
+          ) : (
+            <p>{fm(messages.noResults)}</p>
+          )}
         </div>
       </div>
       {entryToEdit && isPerson && (
