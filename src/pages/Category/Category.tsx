@@ -65,8 +65,6 @@ export const Category: FC = () => {
   const hasReluts = !!filteredItems?.length;
   const inProgress = isLoading || isFetching || isUpdating || isDeleting;
 
-  console.log({ filteredItems: filteredItems?.length });
-
   return (
     <>
       <div className="category">
