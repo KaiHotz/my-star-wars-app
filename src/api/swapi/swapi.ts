@@ -12,36 +12,40 @@ export const getResources = async (): Promise<IResources> => {
 export const getSearchAll = async (search: string, signal: AbortSignal): Promise<TSearch> => {
   const resources = await getResources();
   const categories = Object.keys(resources);
-  const data = await Promise.all(categories.map((category) => httpClient.get(`/api/${category}/?search=${search}`, { signal })));
+  const response = await Promise.allSettled(categories.map((category) => httpClient.get(`/api/${category}/?search=${search}`, { signal })));
 
-  const response = data.reduce((acc, item, index) => {
-    if (!item.data.results.length) {
+  const fullfilled = response.filter((item) => item.status === 'fulfilled');
+
+  const newData = fullfilled.reduce((acc, item, index) => {
+    if (!item.value.data.results.length) {
       return acc;
     } else {
-      return { ...acc, [categories[index]]: item.data.results.slice(0, 3) };
+      return { ...acc, [categories[index]]: item.value.data.results.slice(0, 3) };
     }
   }, {} as TSearch);
 
-  return response;
+  return newData;
 };
 
 export const getCategoryList = async ({ category, pageParam, signal }: ICategoryListParams): Promise<ICategoryList> => {
   if (pageParam === 0) {
     // since the api does not support pagination we need to load 2 pages at once to retrun 20 items intially
-    const response = await Promise.all([
+    const response = await Promise.allSettled([
       httpClient.get<ICategoryList>(`/api/${category}/?page=1`, { signal }),
       httpClient.get<ICategoryList>(`/api/${category}/?page=2`, { signal }),
     ]);
 
-    const data = {
-      ...response[1].data,
-      results: [
-        ...response[0].data.results.map((item) => ({ ...item, id: uuidv4() })),
-        ...response[1].data.results.map((item) => ({ ...item, id: uuidv4() })),
-      ],
-    };
+    const fullfilled = response.filter((item) => item.status === 'fulfilled');
 
-    return data;
+    const newData = fullfilled.reduce((acc, item) => {
+      return {
+        ...acc,
+        ...item.value.data,
+        results: [...acc.value.data.results, ...item.value.data.results.map((item) => ({ ...item, id: uuidv4() }))],
+      };
+    });
+
+    return newData.value.data;
   } else {
     const { data } = await httpClient.get<ICategoryList>(`/api/${category}/?page=${pageParam}`, { signal });
 
