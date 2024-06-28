@@ -20,6 +20,7 @@ export const Header: FC = () => {
   const menuItems = categories.map((category) => ({
     label: fm(messages[category as keyof typeof messages]),
     onSelect: () => navigate(`${routePath.category}/${category}`),
+    active: pathname.includes(category),
   }));
 
   const onChangeTheme = useCallback(() => {

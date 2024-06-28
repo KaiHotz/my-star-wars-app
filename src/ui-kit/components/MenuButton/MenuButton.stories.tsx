@@ -21,7 +21,7 @@ const meta: Meta<typeof MenuButton> = {
         type: 'select',
         labels: {
           none: 'None',
-          envelop: 'Envelope',
+          search: 'Search',
           information: 'Information',
         },
       },

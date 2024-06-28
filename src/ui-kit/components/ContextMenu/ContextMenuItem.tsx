@@ -9,6 +9,7 @@ export interface MenuItemProps {
   hide?: boolean;
   onSelect?: () => void;
   endAdornment?: ReactNode;
+  active?: boolean;
 }
 
 interface ContextMenuItemProps {
@@ -40,6 +41,7 @@ export const ContextMenuItem: FC<ContextMenuItemProps> = ({ item, onClick, onClo
         <button
           className={cx('ui-context-menu__item', {
             'ui-context-menu__item--disabled': item.disabled,
+            'ui-context-menu__item--active': item.active,
           })}
           ref={itemRef}
           type="button"
