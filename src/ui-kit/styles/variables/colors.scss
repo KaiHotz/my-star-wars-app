@@ -27,6 +27,7 @@ $blue-3: #225fe8;
 $blue-4: #1241ac;
 $blue-5: #0b2766;
 $blue-6: #182230;
+$blue-7: #0d1117;
 
 $blue-green-1: #a7f5ff;
 $blue-green-2: #5bedff;
@@ -127,6 +128,7 @@ $blue-violet-5: #251556;
   --blue-4: #{$blue-4};
   --blue-5: #{$blue-5};
   --blue-6: #{$blue-6};
+  --blue-7: #{$blue-7};
 
   --blue-green-1: #{$blue-green-1};
   --blue-green-2: #{$blue-green-2};
@@ -213,7 +215,7 @@ $blue-violet-5: #251556;
 }
 
 @mixin colors-palette-dark-theme() {
-  --app-backgroung-color: color-mix(in srgb, var(--white), var(--blue-6) 97%);
+  --app-backgroung-color: var(--blue-7);
   --positive: color-mix(in srgb, var(--negative), var(--blue-6) 93%);
   --negative: var(--gray-1);
   --emphasis-primary: var(--gray-2);
