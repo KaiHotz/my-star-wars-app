@@ -13,11 +13,9 @@ const categories = ['people', 'films', 'starships', 'vehicles', 'species', 'plan
 export const Header: FC = () => {
   const { formatMessage: fm } = useIntl();
   const { theme, setTheme } = useTheme();
-  const navigate = useNavigate();
   const { pathname } = useLocation();
   const { category } = useParams();
-
-  console.log({ location });
+  const navigate = useNavigate();
 
   const menuItems = categories.map((category) => ({
     label: fm(messages[category as keyof typeof messages]),
