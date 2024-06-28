@@ -16,10 +16,21 @@ export interface CardProps {
 export const Card: FC<CardProps> = ({ data, variant = 'grid', onDelte, onEdit }) => {
   const { formatMessage: fm } = useIntl();
   const hasBtns = !!onDelte || !!onEdit;
+  const hasInfo = !!data.gender || !!data.birth_year;
 
   return (
     <div className={cx(`card card--${variant}`)}>
-      <h2>{data.name || data.title}</h2>
+      <div>
+        <h2>{data.name || data.title}</h2>
+        {hasInfo && (
+          <div className="card__info">
+            {fm(messages.personInfo, {
+              gender: <span className="bold">{data.gender}</span>,
+              birthYear: <span className="bold">{data.birth_year}</span>,
+            })}
+          </div>
+        )}
+      </div>
       {hasBtns && (
         <div className="card__btns">
           {onEdit && <Button onClick={() => onEdit(data)}>{fm(messages.edit)}</Button>}

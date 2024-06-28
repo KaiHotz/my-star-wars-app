@@ -6,6 +6,7 @@ import { TCategory, useCategoryList, useDeleteCategoryItem, useUpdateCategoryIte
 import { Button, Modal, Spinner } from 'src/ui-kit';
 import { FaGrip, FaList } from 'react-icons/fa6';
 import { Card } from 'src/components/Card';
+import { LoaderContainer } from 'src/components/LoaderContainer';
 import { messages } from 'src/dictionary';
 
 import { EditForm } from './components';
@@ -51,6 +52,7 @@ export const Category: FC = () => {
   return (
     <>
       <div className="category">
+        {isDeleting && <LoaderContainer hasBackdrop />}
         <div className="category__header">
           <Button
             variant="ghost"
@@ -78,7 +80,7 @@ export const Category: FC = () => {
         </div>
       </div>
       {entryToEdit && isPerson && (
-        <Modal onClose={handleCloseModal}>
+        <Modal onClose={handleCloseModal} disableCoseOnClickOutside>
           <EditForm entry={entryToEdit} onSubmit={hanldeUpdateItem} inProgress={inProgress} />
         </Modal>
       )}
