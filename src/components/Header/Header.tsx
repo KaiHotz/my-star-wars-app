@@ -1,6 +1,6 @@
 import { FC, useCallback } from 'react';
 import { useIntl } from 'react-intl';
-import { HiMoon, HiSun } from 'react-icons/hi2';
+import { HiBars3, HiMoon, HiSun } from 'react-icons/hi2';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Button, EThemeOptions, MenuButton, useTheme } from 'src/ui-kit';
 import { routePath } from 'src/routes';
@@ -31,28 +31,55 @@ export const Header: FC = () => {
   const pageInfo = category || 'search';
 
   return (
-    <header className="header">
-      <div className="header--left">
-        <Link to={routePath.search} className="header__logo header__link">
-          {fm(messages.title)}
-        </Link>
-      </div>
-      <div className="header--center">{`${fm(messages[pageInfo as keyof typeof messages])}`}</div>
-      <div className="header--right">
-        {pathname !== routePath.search && (
-          <Link to={routePath.search} className="header__link">
-            {fm(messages.search)}
-          </Link>
-        )}
-        <MenuButton items={menuItems}>{fm(messages.categories)}</MenuButton>
-        <div className="header__theme-toggle">
-          <Button
-            variant="ghost"
-            onClick={onChangeTheme}
-            icon={theme === EThemeOptions.LIGHT ? <HiMoon size={25} /> : <HiSun size={25} />}
+    <>
+      <div className="header header__mobile">
+        <div className="header--left">
+          <MenuButton
+            items={[
+              {
+                label: fm(messages.search),
+                onSelect: () => navigate(routePath.search),
+                active: pathname === routePath.search,
+              },
+              ...menuItems,
+            ]}
+            icon={<HiBars3 size={25} />}
           />
         </div>
+        <div className="header--center">{`${fm(messages[pageInfo as keyof typeof messages])}`}</div>
+        <div className="header--right">
+          <div className="header__theme-toggle">
+            <Button
+              variant="ghost"
+              onClick={onChangeTheme}
+              icon={theme === EThemeOptions.LIGHT ? <HiMoon size={20} /> : <HiSun size={20} />}
+            />
+          </div>
+        </div>
       </div>
-    </header>
+      <div className="header header__desktop">
+        <div className="header--left">
+          <Link to={routePath.search} className="header__logo header__link">
+            {fm(messages.title)}
+          </Link>
+        </div>
+        <div className="header--center">{`${fm(messages[pageInfo as keyof typeof messages])}`}</div>
+        <div className="header--right">
+          {pathname !== routePath.search && (
+            <Link to={routePath.search} className="header__link">
+              {fm(messages.search)}
+            </Link>
+          )}
+          <MenuButton items={menuItems}>{fm(messages.categories)}</MenuButton>
+          <div className="header__theme-toggle">
+            <Button
+              variant="ghost"
+              onClick={onChangeTheme}
+              icon={theme === EThemeOptions.LIGHT ? <HiMoon size={25} /> : <HiSun size={25} />}
+            />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };

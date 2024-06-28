@@ -51,4 +51,16 @@
     font-weight: bold;
     text-transform: uppercase;
   }
+
+  &__mobile {
+    @media screen and (min-width: 780px) {
+      display: none;
+    }
+  }
+
+  &__desktop {
+    @media screen and (max-width: 779px) {
+      display: none;
+    }
+  }
 }
