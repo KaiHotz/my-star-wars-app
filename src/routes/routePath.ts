@@ -1,4 +1,4 @@
 export const routePath = {
-  search: '/',
-  category: '/category',
+  search: '/my-star-wars-app/',
+  category: '/my-star-wars-app/category',
 };

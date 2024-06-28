@@ -24,6 +24,7 @@ function App() {
                   </Suspense>
                 }
               />
+              <Route path="*" element={<Navigate to={routePath.search} />} />
             </Route>
             <Route path={routePath.category} element={<MainLayout />}>
               <Route
@@ -35,8 +36,8 @@ function App() {
                   </Suspense>
                 }
               />
+              <Route path="*" element={<Navigate to={routePath.search} />} />
             </Route>
-            <Route path="*" element={<Navigate to={routePath.search} />} />
           </Routes>
         </BrowserRouter>
       </ErrorBoundary>
