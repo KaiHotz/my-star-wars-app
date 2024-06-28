@@ -19,7 +19,7 @@
     "test": "vitest",
     "ci": "yarn lint && yarn test --watch=false",
     "check-types": "tsc --noEmit true",
-    "preview": "vite preview",
+    "preview": "vite preview --port 8080",
     "deploy": "gh-pages -d dist",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build"
