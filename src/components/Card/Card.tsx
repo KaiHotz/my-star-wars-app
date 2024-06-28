@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { forwardRef } from 'react';
 import { useIntl } from 'react-intl';
 import { Button } from 'src/ui-kit';
 import cx from 'clsx';
@@ -6,20 +6,20 @@ import { TCategory } from 'src/api';
 import { messages } from 'src/dictionary';
 import './Card.scss';
 
-export interface CardProps {
+export interface ICardProps {
   data: TCategory;
   variant?: 'grid' | 'list';
   onDelte?: (id: TCategory['id']) => void;
   onEdit?: (data: TCategory) => void;
 }
 
-export const Card: FC<CardProps> = ({ data, variant = 'grid', onDelte, onEdit }) => {
+export const Card = forwardRef<HTMLDivElement, ICardProps>(({ data, variant = 'grid', onDelte, onEdit }, ref) => {
   const { formatMessage: fm } = useIntl();
   const hasBtns = !!onDelte || !!onEdit;
   const hasInfo = !!data.gender || !!data.birth_year;
 
   return (
-    <div className={cx(`card card--${variant}`)}>
+    <div className={cx(`card card--${variant}`)} ref={ref}>
       <div>
         <h2>{data.name || data.title}</h2>
         {hasInfo && (
@@ -43,4 +43,4 @@ export const Card: FC<CardProps> = ({ data, variant = 'grid', onDelte, onEdit })
       )}
     </div>
   );
-};
+});

@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import cx from 'clsx';
@@ -13,6 +13,7 @@ import { EditForm } from './components';
 import './Category.scss';
 
 export const Category: FC = () => {
+  const cardRef = useRef<HTMLDivElement>(null);
   const { formatMessage: fm } = useIntl();
   const { category } = useParams();
   const [entryToEdit, setEntryToEdit] = useState<TCategory | null>(null);
@@ -21,6 +22,12 @@ export const Category: FC = () => {
   const { data, fetchNextPage, isLoading, isFetching, hasNextPage } = useCategoryList(category);
   const { mutateAsync: updateItem, isPending: isUpdating } = useUpdateCategoryItem(category);
   const { mutateAsync: deleteItem, isPending: isDeleting } = useDeleteCategoryItem(category);
+
+  useEffect(() => {
+    if (cardRef.current) {
+      cardRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [data]);
 
   const handleCloseModal = useCallback(() => {
     setEntryToEdit(null);
@@ -62,15 +69,20 @@ export const Category: FC = () => {
         </div>
         <div className={cx(`category__body category__body--${viewMode}`)}>
           {data?.pages.map(({ results }) =>
-            results.map((item) => (
-              <Card
-                key={item.id}
-                data={item}
-                variant={viewMode}
-                onEdit={isPerson ? handleEntrytoEdit : undefined}
-                onDelte={hanldeDeleteItem}
-              />
-            )),
+            results.map((item, index) => {
+              const isLast = index === results.length - 1;
+
+              return (
+                <Card
+                  key={item.id}
+                  ref={isLast ? cardRef : undefined}
+                  data={item}
+                  variant={viewMode}
+                  onEdit={isPerson ? handleEntrytoEdit : undefined}
+                  onDelte={hanldeDeleteItem}
+                />
+              );
+            }),
           )}
         </div>
         <div className="category__footer">
