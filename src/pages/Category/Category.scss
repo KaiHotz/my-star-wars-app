@@ -1,5 +1,7 @@
 .category {
   padding: 0 10px;
+  margin: 0 auto;
+
   &__header {
     position: sticky;
     background-color: var(--app-backgroung-color);
@@ -28,15 +30,11 @@
     padding: 15px;
   }
 
-  &__body,
-  &__footer {
-    margin: 0 auto;
-    @media screen and (min-width: 780px) {
-      width: 90%;
-    }
+  @media screen and (min-width: 780px) {
+    width: 90%;
+  }
 
-    @media screen and (min-width: 1440px) {
-      width: 80%;
-    }
+  @media screen and (min-width: 1440px) {
+    width: 80%;
   }
 }
