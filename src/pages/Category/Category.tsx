@@ -65,6 +65,8 @@ export const Category: FC = () => {
   const hasReluts = !!filteredItems?.length;
   const inProgress = isLoading || isFetching || isUpdating || isDeleting;
 
+  console.log({ filteredItems: filteredItems?.length });
+
   return (
     <>
       <div className="category">
@@ -107,7 +109,11 @@ export const Category: FC = () => {
         </div>
         <div className="category__footer">
           {hasReluts ? (
-            <Button variant="secondary" onClick={() => fetchNextPage()} disabled={!hasNextPage || inProgress}>
+            <Button
+              variant="secondary"
+              onClick={() => fetchNextPage()}
+              disabled={!hasNextPage || inProgress || filteredItems.length < 10}
+            >
               {inProgress ? <Spinner size={16} /> : fm(messages.loadMore)}
             </Button>
           ) : (
