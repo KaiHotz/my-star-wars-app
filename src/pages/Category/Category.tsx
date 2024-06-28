@@ -2,13 +2,13 @@ import { FC, useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import cx from 'clsx';
-import { TCategory, useCategoryList } from 'src/api';
+import { TCategory, useCategoryList, useDeleteCategoryItem, useUpdateCategoryItem } from 'src/api';
 import { Button, Modal, Spinner } from 'src/ui-kit';
 import { FaGrip, FaList } from 'react-icons/fa6';
 import { Card } from 'src/components/Card';
 import { messages } from 'src/dictionary';
 
-import { PersonEditForm } from './components';
+import { EditForm } from './components';
 import './Category.scss';
 
 export const Category: FC = () => {
@@ -18,19 +18,35 @@ export const Category: FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const { data, fetchNextPage, isLoading, isFetching, hasNextPage } = useCategoryList(category);
+  const { mutateAsync: updateItem, isPending: isUpdating } = useUpdateCategoryItem(category);
+  const { mutateAsync: deleteItem, isPending: isDeleting } = useDeleteCategoryItem(category);
 
-  const onEdit = useCallback((data: TCategory) => {
+  const handleCloseModal = useCallback(() => {
+    setEntryToEdit(null);
+  }, []);
+
+  const handleEntrytoEdit = useCallback((data: TCategory) => {
     setEntryToEdit(data);
   }, []);
 
-  const handleDelete = useCallback((id: TCategory['id']) => {
-    // eslint-disable-next-line no-console
-    console.log({ id });
-  }, []);
+  const hanldeUpdateItem = useCallback(
+    async (data: Partial<TCategory>) => {
+      await updateItem(data);
+      handleCloseModal();
+    },
+    [updateItem, handleCloseModal],
+  );
+
+  const hanldeDeleteItem = useCallback(
+    async (id: string) => {
+      await deleteItem(id);
+    },
+    [deleteItem],
+  );
 
   const isGrid = viewMode === 'grid';
   const isPerson = category === 'people';
-  const inProgress = isLoading || isFetching;
+  const inProgress = isLoading || isFetching || isUpdating || isDeleting;
 
   return (
     <>
@@ -46,11 +62,11 @@ export const Category: FC = () => {
           {data?.pages.map(({ results }) =>
             results.map((item) => (
               <Card
-                key={item.name}
+                key={item.id}
                 data={item}
                 variant={viewMode}
-                onEdit={isPerson ? onEdit : undefined}
-                onDelte={handleDelete}
+                onEdit={isPerson ? handleEntrytoEdit : undefined}
+                onDelte={hanldeDeleteItem}
               />
             )),
           )}
@@ -62,8 +78,8 @@ export const Category: FC = () => {
         </div>
       </div>
       {entryToEdit && isPerson && (
-        <Modal onClose={() => setEntryToEdit(null)}>
-          <PersonEditForm entry={entryToEdit} onSubmit={() => {}} />
+        <Modal onClose={handleCloseModal}>
+          <EditForm entry={entryToEdit} onSubmit={hanldeUpdateItem} inProgress={inProgress} />
         </Modal>
       )}
     </>

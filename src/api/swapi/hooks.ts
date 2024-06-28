@@ -1,6 +1,7 @@
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { InfiniteData, useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { getCategoryList, getSearchAll } from './swapi';
+import { deleteCategoryItem, getCategoryList, getSearchAll, updateCategoryItem } from './swapi';
+import { ICategoryList, TCategory } from './types';
 
 export const useSearchAll = (search: string) => {
   return useQuery({
@@ -21,6 +22,40 @@ export const useCategoryList = (category?: string) => {
       }
 
       return lastPageParam + 1;
+    },
+  });
+};
+
+export const useUpdateCategoryItem = (category?: string) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (data: Partial<TCategory>) => {
+      const queryData = queryClient.getQueryData<InfiniteData<ICategoryList>>([category]);
+
+      return await updateCategoryItem(data, queryData);
+    },
+    onSuccess: async (data) => {
+      await queryClient.setQueryData([category], data);
+    },
+  });
+};
+
+export const useDeleteCategoryItem = (category?: string) => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const queryData = queryClient.getQueryData<InfiniteData<ICategoryList>>([category]);
+
+      return await deleteCategoryItem(id, queryData);
+    },
+    onSuccess: async (data) => {
+      await queryClient.setQueryData([category], data);
+    },
+    onError: (error) => {
+      console.error(error);
+      throw new Error('Error deleting category item');
     },
   });
 };

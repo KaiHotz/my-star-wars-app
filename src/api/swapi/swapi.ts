@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
+import { InfiniteData } from '@tanstack/react-query';
 
-import { ICategoryList, ICategoryListParams, IResources, TSearch } from './types';
+import { ICategoryList, ICategoryListParams, IResources, TCategory, TSearch } from './types';
 import { httpClient } from '../httpClient';
 export const getResources = async (): Promise<IResources> => {
   const { data } = await httpClient.get<IResources>('/api');
@@ -28,4 +29,28 @@ export const getSearchAll = async (search: string, signal: AbortSignal): Promise
   }, {} as TSearch);
 
   return response;
+};
+
+export const updateCategoryItem = (data: Partial<TCategory>, queryData: InfiniteData<ICategoryList, unknown> | undefined) => {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      const pages = queryData?.pages.map((page) => {
+        return { ...page, results: page.results.map((item) => (item.id === data.id ? data : item)) };
+      });
+
+      return resolve({ ...queryData, pages });
+    }, 1000),
+  );
+};
+
+export const deleteCategoryItem = (id: string, queryData: InfiniteData<ICategoryList, unknown> | undefined) => {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      const pages = queryData?.pages.map((page) => {
+        return { ...page, results: page.results.filter((item) => item.id !== id) };
+      });
+
+      return resolve({ ...queryData, pages });
+    }, 1000),
+  );
 };

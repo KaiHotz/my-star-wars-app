@@ -90,10 +90,6 @@ export interface IVehicle extends ICommonProps {
   pilots: string[];
 }
 
-export type TCategory = IFilm & IPerson & IPlanet & ISpecie & IStarships & IVehicle;
-
-export type TResults = Array<TCategory>;
-
 export interface IResources {
   films: string;
   people: string;
@@ -104,6 +100,9 @@ export interface IResources {
 }
 
 export type TCategories = keyof IResources;
+export type TCategory = IFilm & IPerson & IPlanet & ISpecie & IStarships & IVehicle;
+
+export type TResults = Array<TCategory>;
 
 export interface ICategoryListParams {
   category?: string;

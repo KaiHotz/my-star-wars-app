@@ -5,12 +5,13 @@ import { TCategory } from 'src/api';
 import * as yup from 'yup';
 import { messages } from 'src/dictionary';
 
-interface IPersonEditFormProps {
+interface IEditFormProps {
   entry: TCategory | null;
   onSubmit: (values: Partial<TCategory>) => void;
+  inProgress?: boolean;
 }
 
-export const PersonEditForm: FC<IPersonEditFormProps> = ({ entry, onSubmit }) => {
+export const EditForm: FC<IEditFormProps> = ({ entry, onSubmit, inProgress }) => {
   const { formatMessage: fm } = useIntl();
 
   const schema = yup.object().shape({
@@ -75,7 +76,9 @@ export const PersonEditForm: FC<IPersonEditFormProps> = ({ entry, onSubmit }) =>
         required
         reserveSpaceForError
       />
-      <Button type="submit">{fm(messages.submit)}</Button>
+      <Button disabled={inProgress} type="submit">
+        {fm(messages.submit)}
+      </Button>
     </Form>
   );
 };

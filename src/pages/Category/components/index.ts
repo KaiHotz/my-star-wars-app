@@ -1,1 +1,1 @@
-export * from './PersonEditForm';
+export * from './EditForm';
