@@ -1,7 +1,7 @@
 import { ChangeEvent, ReactNode } from 'react';
 import { isEmpty } from 'lodash';
 import { useIntl } from 'react-intl';
-import { Button, Input, Spinner } from 'src/ui-kit';
+import { Button, highlightText, Input, Spinner } from 'src/ui-kit';
 import { FaSistrix } from 'react-icons/fa6';
 import cx from 'clsx';
 import { messages } from 'src/dictionary';
@@ -43,19 +43,19 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
         >
           {isLoading && <Spinner size={30} />}
           {data &&
-            Object.entries(data).map(([key, value]) => {
+            Object.entries(data).map(([key, reslut]) => {
               return (
                 <div key={key}>
                   <div className="results__title">{fm(messages[key as keyof typeof messages]) || key}</div>
                   <ul className="results__list">
-                    {Array.isArray(value) ? (
-                      value.map((item: { name?: string; title?: string }) => (
+                    {Array.isArray(reslut) ? (
+                      reslut.map((item: { name?: string; title?: string }) => (
                         <li key={item.name || item.title} className="results__list-item">
-                          {item.name || item.title}
+                          {highlightText({ highlight: value, text: item.name || item.title })}
                         </li>
                       ))
                     ) : (
-                      <li>{value}</li>
+                      <li>{reslut}</li>
                     )}
                     {onViewAll && (
                       <div className="results__view-all">

@@ -1,0 +1,11 @@
+.errorboundary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--error);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  box-sizing: border-box;
+}

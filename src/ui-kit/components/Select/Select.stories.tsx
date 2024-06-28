@@ -11,7 +11,7 @@ const optionsDefault: ISelectOption[] = [
 ];
 
 const meta: Meta<typeof Select> = {
-  title: 'components/Select/Select',
+  title: 'components/Select',
   component: Select,
   argTypes: {},
   args: {

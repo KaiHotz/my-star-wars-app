@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, PropsWithChildren, ReactNode } from 'react';
+import './ErrorBoundary.scss';
 
 interface ErrorBoundaryProps {
   fallback?: ReactNode;
@@ -15,7 +16,6 @@ export class ErrorBoundary extends Component<PropsWithChildren<ErrorBoundaryProp
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public static getDerivedStateFromError(_error: Error): State {
-    // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
@@ -25,7 +25,13 @@ export class ErrorBoundary extends Component<PropsWithChildren<ErrorBoundaryProp
 
   public render() {
     if (this.state.hasError) {
-      return this.props.fallback || <h1>Sorry.. there was an error</h1>;
+      return (
+        this.props.fallback || (
+          <div className="errorboundary">
+            <h1>Sorry.. there was an error</h1>
+          </div>
+        )
+      );
     }
 
     return this.props.children;
