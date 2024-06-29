@@ -60,12 +60,20 @@ export const EditForm: FC<IEditFormProps> = ({ entry, onSubmit, inProgress }) =>
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
-      <FormInput name="name" label={fm(messages.name)} placeholder={fm(messages.name)} required reserveSpaceForError />
+      <FormInput
+        name="name"
+        label={fm(messages.name)}
+        placeholder={fm(messages.name)}
+        disabled={inProgress}
+        required
+        reserveSpaceForError
+      />
       <FormSelect
         name="gender"
         label={fm(messages.gender)}
         placeholder={fm(messages.gender)}
         options={genderOptions}
+        disabled={inProgress}
         required
         reserveSpaceForError
       />
@@ -73,6 +81,7 @@ export const EditForm: FC<IEditFormProps> = ({ entry, onSubmit, inProgress }) =>
         name="birth_year"
         label={fm(messages.birthYear)}
         placeholder={fm(messages.birthYear)}
+        disabled={inProgress}
         required
         reserveSpaceForError
       />

@@ -24,4 +24,15 @@ describe('<Label />', () => {
 
     expect(label).toHaveClass(props.className);
   });
+
+  it('should display as required', () => {
+    const props = {
+      children: 'This is a Label',
+      required: true,
+    };
+    render(<Label {...props} />);
+    const label = screen.getByText(`${props.children} *`);
+
+    expect(label).toBeInTheDocument();
+  });
 });
