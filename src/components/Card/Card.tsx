@@ -18,8 +18,7 @@ export interface ICardProps {
 export const Card = forwardRef<HTMLDivElement, ICardProps>(
   ({ data, variant = 'grid', onDelte, onEdit, searchTerm }, ref) => {
     const { formatMessage: fm } = useIntl();
-    const hasBtns = !!onDelte || !!onEdit;
-
+    const episodes = useMemo(() => data.films?.map((film) => film.replace(/\D/g, '')).join(','), [data.films]);
     const details = useMemo(
       () =>
         Object.entries(omit(data, ['created', 'edited', 'name', 'title'])).reduce((acc, [key, value]) => {
@@ -44,26 +43,25 @@ export const Card = forwardRef<HTMLDivElement, ICardProps>(
               : data.name || data.title}
           </h2>
           <div className="card__info">
-            {Object.entries(details).map(([key, value]) => {
-              return (
-                <div key={key}>
-                  <span className="bold">{capitalizeWords(key.replace(/_/g, ' '))}: </span>
-                  <span>{value as string}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        {hasBtns && (
-          <div className="card__btns">
-            {onEdit && <Button onClick={() => onEdit(data)}>{fm(messages.edit)}</Button>}
-            {onDelte && (
-              <Button variant="danger" onClick={() => onDelte(data.url)}>
-                {fm(messages.delete)}
-              </Button>
+            {Object.entries({ ...details, episodes }).map(
+              ([key, value]) =>
+                value && (
+                  <div key={key}>
+                    <span className="bold">{capitalizeWords(key.replace(/_/g, ' '))}: </span>
+                    <span>{value}</span>
+                  </div>
+                ),
             )}
           </div>
-        )}
+        </div>
+        <div className="card__btns">
+          {onEdit && <Button onClick={() => onEdit(data)}>{fm(messages.edit)}</Button>}
+          {onDelte && (
+            <Button variant="danger" onClick={() => onDelte(data.url)}>
+              {fm(messages.delete)}
+            </Button>
+          )}
+        </div>
       </div>
     );
   },
