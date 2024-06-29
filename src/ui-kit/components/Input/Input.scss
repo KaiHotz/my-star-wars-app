@@ -19,7 +19,6 @@
     &::placeholder {
       color: var(--emphasis-secondary);
     }
-    &:hover,
     &:hover::placeholder {
       color: var(--emphasis-quaternary);
     }

@@ -46,7 +46,7 @@ export const Card = forwardRef<HTMLDivElement, ICardProps>(
           <div className="card__info">
             {Object.entries(details).map(([key, value]) => {
               return (
-                <div key={key} className="card__info-item">
+                <div key={key}>
                   <span className="bold">{capitalizeWords(key.replace(/_/g, ' '))}: </span>
                   <span>{value as string}</span>
                 </div>
