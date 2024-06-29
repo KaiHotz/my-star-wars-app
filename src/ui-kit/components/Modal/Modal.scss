@@ -17,7 +17,7 @@
   background-color: var(--app-backgroung-color);
   border-radius: 20px;
   padding: 2.5em 1.5em 1.5em;
-  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
 
   &--small {
     min-width: 320px;

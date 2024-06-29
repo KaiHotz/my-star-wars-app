@@ -13,6 +13,7 @@ import './Modal.scss';
 export interface IModalProps {
   size?: 'small' | 'medium' | 'large' | 'full-page';
   disableBackdrop?: boolean;
+  hasFrozenBackdrop?: boolean;
   disableCloseButton?: boolean;
   disableCoseOnClickOutside?: boolean;
   onClose: () => void;
@@ -24,6 +25,7 @@ export const Modal: FC<PropsWithChildren<IModalProps>> = ({
   disableCloseButton,
   disableBackdrop,
   disableCoseOnClickOutside,
+  hasFrozenBackdrop,
   children,
 }) => {
   const modalRef = useRef(null);
@@ -37,7 +39,7 @@ export const Modal: FC<PropsWithChildren<IModalProps>> = ({
 
   return createPortal(
     <>
-      {!disableBackdrop && <Backdrop isFrosted />}
+      {!disableBackdrop && <Backdrop isFrosted={hasFrozenBackdrop} />}
       <div className={cx('ui-modal', `ui-modal--${size}`)} ref={modalRef}>
         {!disableCloseButton && (
           <div className="ui-modal__close-icon">

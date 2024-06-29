@@ -117,7 +117,7 @@ export const Category: FC = () => {
         </div>
       </div>
       {entryToEdit && isPerson && (
-        <Modal onClose={handleCloseModal} disableCoseOnClickOutside>
+        <Modal onClose={handleCloseModal} disableCoseOnClickOutside hasFrozenBackdrop>
           <EditForm entry={entryToEdit} onSubmit={hanldeUpdateItem} inProgress={inProgress} />
         </Modal>
       )}
