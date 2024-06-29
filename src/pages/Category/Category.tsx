@@ -107,15 +107,9 @@ export const Category: FC = () => {
           })}
         </div>
         <div className="category__footer">
-          {hasReluts && hasNextPage && (
-            <Button
-              variant="secondary"
-              onClick={() => fetchNextPage()}
-              disabled={!hasNextPage || inProgress || filteredItems.length < 10}
-            >
-              {inProgress ? <Spinner size={16} /> : fm(messages.loadMore)}
-            </Button>
-          )}
+          <Button variant="secondary" onClick={() => fetchNextPage()} disabled={!hasNextPage || inProgress}>
+            {inProgress ? <Spinner size={16} /> : fm(messages.loadMore)}
+          </Button>
           {!hasReluts && !inProgress && <p>{fm(messages.noResults)}</p>}
         </div>
       </div>
