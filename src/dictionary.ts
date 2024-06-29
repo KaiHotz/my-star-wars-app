@@ -2,7 +2,8 @@ import { createDictionary } from 'src/utils';
 
 export const messages = createDictionary('star-wars', {
   title: 'Star Wars',
-  noResults: 'Oops!! No results where found for your search',
+  noSearchResults: 'No results where found for your search',
+  noResultsSofar: 'No results so far, try loading more',
   search: 'Search',
   searchPlaceholder: 'Search...',
   viewAll: 'View all',

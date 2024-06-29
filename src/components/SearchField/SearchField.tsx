@@ -68,7 +68,7 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
                 </div>
               );
             })}
-          {noData && <div>{fm(messages.noResults)}</div>}
+          {noData && <div>{fm(messages.noSearchResults)}</div>}
         </div>
       )}
     </>

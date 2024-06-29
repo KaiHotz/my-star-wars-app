@@ -65,6 +65,7 @@ export const Category: FC = () => {
   const hasReluts = !!filteredItems?.length;
   const inProgress = isLoading || isFetching || isUpdating || isDeleting;
   const showLoader = isDeleting || (!hasReluts && inProgress);
+  const noResultMsg = hasNextPage ? fm(messages.noResultsSofar) : fm(messages.noSearchResults);
 
   return (
     <>
@@ -107,7 +108,7 @@ export const Category: FC = () => {
           })}
         </div>
         <div className="category__footer">
-          {!hasReluts && !inProgress && <p>{fm(messages.noResults)}</p>}
+          {!hasReluts && !inProgress && <span>{noResultMsg}</span>}
           {hasNextPage && (
             <Button variant="secondary" onClick={() => fetchNextPage()} disabled={inProgress}>
               {inProgress ? <Spinner size={16} /> : fm(messages.loadMore)}
