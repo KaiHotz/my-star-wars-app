@@ -10,7 +10,7 @@ export interface ICardProps {
   data: TCategory;
   searchTerm?: string;
   variant?: 'grid' | 'list';
-  onDelte?: (id: TCategory['id']) => void;
+  onDelte?: (id: TCategory['url']) => void;
   onEdit?: (data: TCategory) => void;
 }
 

@@ -50,7 +50,7 @@ export const Category: FC = () => {
   );
 
   const hanldeDeleteItem = useCallback(
-    async (id: string) => {
+    async (id: TCategory['url']) => {
       await deleteItem(id);
     },
     [deleteItem],
@@ -95,7 +95,7 @@ export const Category: FC = () => {
 
             return (
               <Card
-                key={item.id}
+                key={item.url}
                 ref={isLast ? cardRef : undefined}
                 data={item}
                 searchTerm={search}

@@ -44,7 +44,7 @@ export const updateCategoryItem = (data: Partial<TCategory>, queryData: Infinite
   );
 };
 
-export const deleteCategoryItem = (id: string, queryData: InfiniteData<ICategoryList, unknown> | undefined) => {
+export const deleteCategoryItem = (id: TCategory['url'], queryData: InfiniteData<ICategoryList, unknown> | undefined) => {
   return new Promise((resolve) =>
     setTimeout(() => {
       const pages = queryData?.pages.map((page) => {

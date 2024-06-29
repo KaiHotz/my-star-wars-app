@@ -1,7 +1,6 @@
 export interface ICommonProps {
   title?: string;
   name?: string;
-  id: string;
   films?: string[];
   url: string;
   created: string;
