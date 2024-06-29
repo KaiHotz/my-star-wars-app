@@ -107,7 +107,7 @@ export const Category: FC = () => {
           })}
         </div>
         <div className="category__footer">
-          {hasReluts && (
+          {hasReluts && hasNextPage && (
             <Button
               variant="secondary"
               onClick={() => fetchNextPage()}
