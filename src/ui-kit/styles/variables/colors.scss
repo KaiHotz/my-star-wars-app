@@ -223,6 +223,7 @@ $blue-violet-5: #251556;
   --emphasis-tertiary: #{darken($gray-3, 40%)};
   --emphasis-quaternary: #{darken($gray-3, 60%)};
   --border-color: color-mix(in srgb, var(--emphasis-tertiary) 70%, transparent);
+  --box-shadow: 0 0 7px 1px rgba(251, 251, 251, 0.2);
 }
 
 @mixin colors-palette-light-theme() {
@@ -234,4 +235,5 @@ $blue-violet-5: #251556;
   --emphasis-tertiary: #{lighten($gray-10, 40%)};
   --emphasis-quaternary: #{lighten($gray-10, 60%)};
   --border-color: color-mix(in srgb, var(--emphasis-tertiary) 70%, transparent);
+  --box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
 }
