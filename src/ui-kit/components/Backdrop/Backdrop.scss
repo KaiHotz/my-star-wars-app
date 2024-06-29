@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-  background-color: color-mix(in srgb, var(--emphasis-primary) 70%, transparent);
+  background-color: color-mix(in srgb, var(--emphasis-primary) 10%, transparent);
 
   &--frosted {
     backdrop-filter: blur(5px);

@@ -26,7 +26,7 @@ export const LoaderContainer: FC<ILoaderContainerProps> = ({
   speedMultiplier,
 }) => (
   <div className={cx('loader-container', className)} style={{ height, width, position }}>
-    {hasBackdrop && <Backdrop isFrosted />}
+    {hasBackdrop && <Backdrop />}
     <Spinner size={size} color={color} speedMultiplier={speedMultiplier} />
   </div>
 );

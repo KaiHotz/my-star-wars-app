@@ -39,7 +39,7 @@ export const Modal: FC<PropsWithChildren<IModalProps>> = ({
 
   return createPortal(
     <>
-      {!disableBackdrop && <Backdrop isFrosted={hasFrozenBackdrop} />}
+      {(!disableBackdrop || hasFrozenBackdrop) && <Backdrop isFrosted={hasFrozenBackdrop} />}
       <div className={cx('ui-modal', `ui-modal--${size}`)} ref={modalRef}>
         {!disableCloseButton && (
           <div className="ui-modal__close-icon">
