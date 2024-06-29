@@ -41,7 +41,7 @@ export const Card = forwardRef<HTMLDivElement, ICardProps>(
           <div className="card__btns">
             {onEdit && <Button onClick={() => onEdit(data)}>{fm(messages.edit)}</Button>}
             {onDelte && (
-              <Button variant="danger" onClick={() => onDelte(data.id)}>
+              <Button variant="danger" onClick={() => onDelte(data.url)}>
                 {fm(messages.delete)}
               </Button>
             )}

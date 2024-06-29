@@ -1,10 +1,9 @@
-import { v4 as uuidv4 } from 'uuid';
 import { InfiniteData } from '@tanstack/react-query';
 
 import { ICategoryList, ICategoryListParams, IResources, TCategory, TSearch } from './types';
 import { httpClient } from '../httpClient';
 export const getResources = async (): Promise<IResources> => {
-  const { data } = await httpClient.get<IResources>('/api');
+  const { data } = await httpClient.get<IResources>('');
 
   return data;
 };
@@ -12,7 +11,7 @@ export const getResources = async (): Promise<IResources> => {
 export const getSearchAll = async (search: string, signal: AbortSignal): Promise<TSearch> => {
   const resources = await getResources();
   const categories = Object.keys(resources);
-  const response = await Promise.allSettled(categories.map((category) => httpClient.get(`/api/${category}/?search=${search}`, { signal })));
+  const response = await Promise.allSettled(categories.map((category) => httpClient.get(`/${category}/?search=${search}`, { signal })));
 
   const fullfilled = response.filter((item) => item.status === 'fulfilled');
 
@@ -28,16 +27,16 @@ export const getSearchAll = async (search: string, signal: AbortSignal): Promise
 };
 
 export const getCategoryList = async ({ category, pageParam, signal }: ICategoryListParams): Promise<ICategoryList> => {
-  const { data } = await httpClient.get<ICategoryList>(`/api/${category}/?page=${pageParam}`, { signal });
+  const { data } = await httpClient.get<ICategoryList>(`/${category}/?page=${pageParam}`, { signal });
 
-  return { ...data, results: data.results.map((item) => ({ ...item, id: uuidv4() })) };
+  return data;
 };
 
 export const updateCategoryItem = (data: Partial<TCategory>, queryData: InfiniteData<ICategoryList, unknown> | undefined) => {
   return new Promise((resolve) =>
     setTimeout(() => {
       const pages = queryData?.pages.map((page) => {
-        return { ...page, results: page.results.map((item) => (item.id === data.id ? data : item)) };
+        return { ...page, results: page.results.map((item) => (item.url === data.url ? data : item)) };
       });
 
       return resolve({ ...queryData, pages });
@@ -49,7 +48,7 @@ export const deleteCategoryItem = (id: string, queryData: InfiniteData<ICategory
   return new Promise((resolve) =>
     setTimeout(() => {
       const pages = queryData?.pages.map((page) => {
-        return { ...page, results: page.results.filter((item) => item.id !== id) };
+        return { ...page, results: page.results.filter((item) => item.url !== id) };
       });
 
       return resolve({ ...queryData, pages });
