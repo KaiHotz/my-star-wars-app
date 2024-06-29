@@ -11,7 +11,7 @@ export interface ICardProps {
   data: TCategory;
   searchTerm?: string;
   variant?: 'grid' | 'list';
-  onDelte?: (id: TCategory['url']) => void;
+  onDelte?: (data: TCategory) => void;
   onEdit?: (data: TCategory) => void;
 }
 
@@ -57,7 +57,7 @@ export const Card = forwardRef<HTMLDivElement, ICardProps>(
         <div className="card__btns">
           {onEdit && <Button onClick={() => onEdit(data)}>{fm(messages.edit)}</Button>}
           {onDelte && (
-            <Button variant="danger" onClick={() => onDelte(data.url)}>
+            <Button variant="danger" onClick={() => onDelte(data)}>
               {fm(messages.delete)}
             </Button>
           )}

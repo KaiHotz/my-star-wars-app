@@ -19,6 +19,7 @@ export const Category: FC = () => {
   const { state } = useLocation();
   const [search, setSearch] = useState<string>(state?.searchTerm || '');
   const [entryToEdit, setEntryToEdit] = useState<TCategory | null>(null);
+  const [entryToDelete, setEntryToDelete] = useState<TCategory | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const { data, fetchNextPage, isLoading, isFetching, hasNextPage } = useCategoryList(category);
@@ -35,6 +36,7 @@ export const Category: FC = () => {
 
   const handleCloseModal = useCallback(() => {
     setEntryToEdit(null);
+    setEntryToDelete(null);
   }, []);
 
   const handleEntrytoEdit = useCallback((data: TCategory) => {
@@ -49,12 +51,12 @@ export const Category: FC = () => {
     [updateItem, handleCloseModal],
   );
 
-  const hanldeDeleteItem = useCallback(
-    async (id: TCategory['url']) => {
-      await deleteItem(id);
-    },
-    [deleteItem],
-  );
+  const hanldeDeleteItem = useCallback(async () => {
+    if (entryToDelete) {
+      await deleteItem(entryToDelete?.url);
+      handleCloseModal();
+    }
+  }, [deleteItem, entryToDelete, handleCloseModal]);
 
   const categoryItems = data?.pages.map(({ results }) => results).flat();
   const filteredItems = categoryItems?.filter(({ name, title }) =>
@@ -102,7 +104,7 @@ export const Category: FC = () => {
                 searchTerm={search}
                 variant={viewMode}
                 onEdit={isPerson ? handleEntrytoEdit : undefined}
-                onDelte={hanldeDeleteItem}
+                onDelte={setEntryToDelete}
               />
             );
           })}
@@ -119,6 +121,21 @@ export const Category: FC = () => {
       {entryToEdit && isPerson && (
         <Modal onClose={handleCloseModal} disableCoseOnClickOutside hasFrozenBackdrop>
           <EditForm entry={entryToEdit} onSubmit={hanldeUpdateItem} inProgress={inProgress} />
+        </Modal>
+      )}
+      {entryToDelete && (
+        <Modal onClose={handleCloseModal} disableCoseOnClickOutside hasFrozenBackdrop>
+          <div className="category__delete-modal">
+            <h3>{fm(messages.deleteEntry, { name: entryToDelete.name || entryToDelete.title })}</h3>
+            <div className="category__delete-modal-btns">
+              <Button variant="secondary" onClick={handleCloseModal}>
+                {fm(messages.cancel)}
+              </Button>
+              <Button variant="danger" onClick={hanldeDeleteItem}>
+                {fm(messages.delete)}
+              </Button>
+            </div>
+          </div>
         </Modal>
       )}
     </>

@@ -11,7 +11,9 @@ export const messages = createDictionary('star-wars', {
   categories: 'Categories',
   edit: 'Edit',
   delete: 'Delete',
+  deleteEntry: 'You are about to delete {name}',
   submit: 'Submit',
+  cancel: 'Cancel',
 
   name: 'Name',
   birthYear: 'Year of birth',
