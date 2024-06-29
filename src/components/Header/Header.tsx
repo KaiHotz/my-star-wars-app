@@ -59,7 +59,7 @@ export const Header: FC = () => {
       </div>
       <div className="header header__desktop">
         <div className="header--left">
-          <Link to={routePath.search} className="header__logo header__link">
+          <Link to={routePath.search} className="header__link header__logo">
             {fm(messages.title)}
           </Link>
         </div>

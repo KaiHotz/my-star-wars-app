@@ -26,7 +26,7 @@ export const Category: FC = () => {
   const { mutateAsync: deleteItem, isPending: isDeleting } = useDeleteCategoryItem(category);
 
   useEffect(() => {
-    if (cardRef.current) {
+    if (cardRef.current && (data?.pages.length ?? 0) > 1) {
       cardRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [data]);
