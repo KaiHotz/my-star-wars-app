@@ -18,6 +18,12 @@
     align-items: center;
     padding: 16px 20px;
     margin-bottom: 1px;
+
+    .card__info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
   }
 
   &__info {
@@ -28,5 +34,6 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    margin-left: 10px;
   }
 }
