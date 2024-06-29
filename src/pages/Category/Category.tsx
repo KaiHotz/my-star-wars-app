@@ -64,11 +64,12 @@ export const Category: FC = () => {
   const isPerson = category === 'people';
   const hasReluts = !!filteredItems?.length;
   const inProgress = isLoading || isFetching || isUpdating || isDeleting;
+  const showLoader = isDeleting || (!hasReluts && inProgress);
 
   return (
     <>
       <div className="category">
-        {isDeleting && <LoaderContainer hasBackdrop />}
+        {showLoader && <LoaderContainer hasBackdrop />}
         <div className="category__header">
           <div>
             <Input
@@ -106,7 +107,7 @@ export const Category: FC = () => {
           })}
         </div>
         <div className="category__footer">
-          {hasReluts ? (
+          {hasReluts && (
             <Button
               variant="secondary"
               onClick={() => fetchNextPage()}
@@ -114,9 +115,8 @@ export const Category: FC = () => {
             >
               {inProgress ? <Spinner size={16} /> : fm(messages.loadMore)}
             </Button>
-          ) : (
-            <p>{fm(messages.noResults)}</p>
           )}
+          {!hasReluts && !inProgress && <p>{fm(messages.noResults)}</p>}
         </div>
       </div>
       {entryToEdit && isPerson && (
