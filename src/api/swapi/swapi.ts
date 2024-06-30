@@ -15,7 +15,7 @@ export const getSearchAll = async (search: string, signal: AbortSignal): Promise
 
   const fullfilled = response.filter((item) => item.status === 'fulfilled');
 
-  const newData = fullfilled.reduce((acc, item, index) => {
+  const data = fullfilled.reduce((acc, item, index) => {
     if (!item.value.data.results.length) {
       return acc;
     } else {
@@ -23,7 +23,7 @@ export const getSearchAll = async (search: string, signal: AbortSignal): Promise
     }
   }, {} as TSearch);
 
-  return newData;
+  return data;
 };
 
 export const getCategoryList = async ({ category, pageParam, signal }: ICategoryListParams): Promise<ICategoryList> => {
