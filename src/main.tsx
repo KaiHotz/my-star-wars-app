@@ -3,6 +3,7 @@ import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
+import { CategoriesProvider } from './providers';
 import { ThemeProvider } from './ui-kit';
 import App from './App.tsx';
 import './main.scss';
@@ -32,7 +33,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       }}
     >
       <ThemeProvider name="star-wars">
-        <App />
+        <CategoriesProvider>
+          <App />
+        </CategoriesProvider>
       </ThemeProvider>
     </IntlProvider>
   </QueryClientProvider>,

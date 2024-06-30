@@ -1,13 +1,23 @@
 import { InfiniteData, useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useCategoriesContext } from 'src/providers';
 
-import { deleteCategoryItem, getCategoryList, getSearchAll, updateCategoryItem } from './swapi';
+import { deleteCategoryItem, getCategories, getCategoryList, getSearchAll, updateCategoryItem } from './swapi';
 import { ICategoryList, TCategory } from './types';
 
+export const useCategories = () => {
+  return useQuery({
+    queryKey: ['categories'],
+    queryFn: async ({ signal }) => await getCategories(signal),
+  });
+};
+
 export const useSearchAll = (search: string) => {
+  const { categories } = useCategoriesContext();
+
   return useQuery({
     queryKey: ['search', search],
-    queryFn: async ({ signal }) => await getSearchAll(search, signal),
-    enabled: !!search,
+    queryFn: async ({ signal }) => await getSearchAll({ categories, search, signal }),
+    enabled: !!search && categories.length > 0,
   });
 };
 
