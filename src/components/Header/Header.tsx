@@ -16,7 +16,7 @@ export const Header: FC = () => {
   const { category } = useParams();
   const navigate = useNavigate();
 
-  const { data: categories } = useCategories();
+  const { data: categories, isFetching: isFetchingCategories } = useCategories();
 
   const menuItems = useMemo(
     () =>
@@ -48,6 +48,7 @@ export const Header: FC = () => {
               },
               ...menuItems,
             ]}
+            disabled={isFetchingCategories}
             icon={<HiBars3 size={25} />}
           />
         </div>

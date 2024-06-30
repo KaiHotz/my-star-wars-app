@@ -11,6 +11,7 @@ export interface ISearchFieldProps<T extends NonNullable<unknown> | ReactNode> {
   value: string;
   isLoading: boolean;
   data?: T;
+  disabled?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onViewAll?: (key: string) => void;
 }
@@ -20,6 +21,7 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
   data,
   isLoading,
   onChange,
+  disabled,
   onViewAll,
 }: ISearchFieldProps<T>) => {
   const { formatMessage: fm } = useIntl();
@@ -33,6 +35,7 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
         onChange={onChange}
         placeholder={fm(messages.searchPlaceholder)}
         startAdornment={<FaSistrix />}
+        disabled={disabled}
       />
       {showResults && (
         <div
