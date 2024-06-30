@@ -1,14 +1,13 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { HiBars3, HiMoon, HiSun } from 'react-icons/hi2';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Button, EThemeOptions, MenuButton, useTheme } from 'src/ui-kit';
 import { routePath } from 'src/routes';
 import { messages } from 'src/dictionary';
+import { useCategories } from 'src/api';
 
 import './Header.scss';
-
-const categories = ['people', 'films', 'starships', 'vehicles', 'species', 'planets'];
 
 export const Header: FC = () => {
   const { formatMessage: fm } = useIntl();
@@ -17,11 +16,17 @@ export const Header: FC = () => {
   const { category } = useParams();
   const navigate = useNavigate();
 
-  const menuItems = categories.map((category) => ({
-    label: fm(messages[category as keyof typeof messages]),
-    onSelect: () => navigate(`${routePath.category}/${category}`),
-    active: pathname.includes(category),
-  }));
+  const { data: categories } = useCategories();
+
+  const menuItems = useMemo(
+    () =>
+      categories?.map((category) => ({
+        label: fm(messages[category as keyof typeof messages]),
+        onSelect: () => navigate(`${routePath.category}/${category}`),
+        active: pathname.includes(category),
+      })) || [],
+    [categories, fm, navigate, pathname],
+  );
 
   const onChangeTheme = useCallback(() => {
     const themeValue = theme === EThemeOptions.LIGHT ? EThemeOptions.DARK : EThemeOptions.LIGHT;
