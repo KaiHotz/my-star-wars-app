@@ -2,15 +2,15 @@ import { InfiniteData } from '@tanstack/react-query';
 
 import { ICategoryList, ICategoryListParams, IResources, TCategory, TSearch } from './types';
 import { httpClient } from '../httpClient';
-export const getResources = async (): Promise<IResources> => {
-  const { data } = await httpClient.get<IResources>('');
+export const getCategories = async (signal: AbortSignal): Promise<string[]> => {
+  const { data } = await httpClient.get<IResources>('', { signal });
+  const categories = Object.keys(data);
 
-  return data;
+  return categories;
 };
 
 export const getSearchAll = async (search: string, signal: AbortSignal): Promise<TSearch> => {
-  const resources = await getResources();
-  const categories = Object.keys(resources);
+  const categories = await getCategories(signal);
   const response = await Promise.allSettled(categories.map((category) => httpClient.get(`/${category}/?search=${search}`, { signal })));
 
   const fullfilled = response.filter((item) => item.status === 'fulfilled');
