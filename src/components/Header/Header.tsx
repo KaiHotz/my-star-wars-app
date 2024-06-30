@@ -5,10 +5,9 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Button, EThemeOptions, MenuButton, useTheme } from 'src/ui-kit';
 import { routePath } from 'src/routes';
 import { messages } from 'src/dictionary';
+import { useCategoriesContext } from 'src/providers';
 
 import './Header.scss';
-
-const categories = ['people', 'films', 'starships', 'vehicles', 'species', 'planets'];
 
 export const Header: FC = () => {
   const { formatMessage: fm } = useIntl();
@@ -16,6 +15,7 @@ export const Header: FC = () => {
   const { pathname } = useLocation();
   const { category } = useParams();
   const navigate = useNavigate();
+  const { categories } = useCategoriesContext();
 
   const menuItems = categories.map((category) => ({
     label: fm(messages[category as keyof typeof messages]),
