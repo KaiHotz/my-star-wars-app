@@ -1,6 +1,8 @@
 # my-star-wars-app
 A simple search engine based on [The Start Wars API](https://swapi.dev/)
 
+### Find the requirement [here](Requirements.pdf)
+
 ### Live Demo
 Click [here](https://kaihotz.github.io/my-star-wars-app/)
 
