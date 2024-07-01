@@ -20,7 +20,7 @@ export const MenuButton: FC<MenuButtonProps> = ({ children, variant = 'ghost', i
       {
         name: 'offset',
         options: {
-          offset: [5, 5],
+          offset: [0, 5],
         },
       },
     ],
