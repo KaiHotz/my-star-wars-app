@@ -27,7 +27,7 @@ module.exports = {
       jsx: true,
     },
   },
-  ignorePatterns: ['!*.js', '.*.js', '*.json', 'scripts', 'node_modules'],
+  ignorePatterns: ['!*.js', '.*.js', '*.json', 'scripts', 'node_modules', 'dist', '.eslintrc.cjs'],
   rules: {
     'newline-before-return': 'error',
     'no-console': [
