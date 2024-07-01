@@ -10,7 +10,7 @@ export const highlightText = ({ highlight, text }: { highlight: string; text?: s
           key={i}
           style={
             part.toLowerCase() === highlight.toLowerCase()
-              ? { color: getCSSVariable('--orange-3'), fontWeight: 'bold' }
+              ? { color: getCSSVariable('--orange-3'), fontWeight: 'bolder' }
               : undefined
           }
         >
