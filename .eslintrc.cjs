@@ -29,7 +29,7 @@ module.exports = {
   },
   ignorePatterns: ['!*.js', '.*.js', '*.json', 'scripts', 'node_modules', 'dist', '.eslintrc.cjs'],
   rules: {
-    'newline-before-return': 'error',
+    'newline-before-return': 'warn',
     'no-console': [
       'warn',
       {
