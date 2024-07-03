@@ -18,6 +18,7 @@ const Search: FC = () => {
   const { data, isLoading, isFetching: isFetchingSearch } = useSearchAll(debouncedSearch);
 
   const handleSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value), []);
+  const handleClearSearch = useCallback(() => setSearchTerm(''), []);
   const handleViewAll = useCallback(
     (category: string) => navigate(`${routePath.category}/${category}`, { state: { searchTerm } }),
     [navigate, searchTerm],
@@ -28,6 +29,7 @@ const Search: FC = () => {
     <div className="search">
       <SearchField<TSearch>
         onChange={handleSearch}
+        onClear={handleClearSearch}
         value={searchTerm}
         data={data}
         disabled={!!isFetchingCategories}

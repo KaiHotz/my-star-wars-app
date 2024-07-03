@@ -2,7 +2,7 @@ import { ChangeEvent, FC, useCallback, useEffect, useRef, useState } from 'react
 import { useLocation, useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import cx from 'clsx';
-import { FaGrip, FaList, FaSistrix, FaXmark } from 'react-icons/fa6';
+import { FaGrip, FaList, FaSistrix } from 'react-icons/fa6';
 import { TCategory, useCategoryList, useDeleteCategoryItem, useUpdateCategoryItem } from 'src/api';
 import { Button, Input, Modal, Spinner } from 'src/ui-kit';
 import { Card } from 'src/components/Card';
@@ -81,9 +81,7 @@ export const Category: FC = () => {
               onChange={handleSearch}
               placeholder={fm(messages.searchPlaceholder)}
               startAdornment={<FaSistrix />}
-              endAdornment={
-                search && <Button variant="ghost" onClick={() => setSearch('')} icon={<FaXmark size={16} />} />
-              }
+              onClear={() => setSearch('')}
             />
           </div>
           <Button

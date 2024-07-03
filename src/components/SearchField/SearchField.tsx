@@ -1,8 +1,8 @@
 import { ChangeEvent, ReactNode } from 'react';
 import { isEmpty } from 'lodash';
 import { useIntl } from 'react-intl';
-import { Button, highlightText, Input, Spinner } from 'src/ui-kit';
 import { FaSistrix } from 'react-icons/fa6';
+import { Button, highlightText, Input, Spinner } from 'src/ui-kit';
 import cx from 'clsx';
 import { messages } from 'src/dictionary';
 import './SearchField.scss';
@@ -13,6 +13,7 @@ export interface ISearchFieldProps<T extends NonNullable<unknown> | ReactNode> {
   data?: T;
   disabled?: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onClear?: () => void;
   onViewAll?: (key: string) => void;
 }
 
@@ -21,6 +22,7 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
   data,
   isLoading,
   onChange,
+  onClear,
   disabled,
   onViewAll,
 }: ISearchFieldProps<T>) => {
@@ -36,6 +38,7 @@ export const SearchField = <T extends NonNullable<unknown> | ReactNode>({
         placeholder={fm(messages.searchPlaceholder)}
         startAdornment={<FaSistrix />}
         disabled={disabled}
+        onClear={onClear}
       />
       {showResults && (
         <div

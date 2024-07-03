@@ -1,6 +1,6 @@
 import { forwardRef, InputHTMLAttributes, ReactElement, ReactNode, useState } from 'react';
 import cx from 'clsx';
-import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import { FaEye, FaEyeSlash, FaXmark } from 'react-icons/fa6';
 
 import { Button } from '../Button';
 import { Hint } from '../Hint';
@@ -21,6 +21,7 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   labelEndAdornment?: ReactNode;
   passwordToggle?: boolean;
   passwordToggleTooltip?: string;
+  onClear?: () => void;
 }
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>(
@@ -42,6 +43,8 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
       passwordToggle,
       passwordToggleTooltip,
       required,
+      onClear,
+      value,
       ...rest
     },
     ref,
@@ -102,7 +105,12 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
                   )}
                 </div>
               )
-            : endAdornment && <div className="ui-input__end-adornment">{endAdornment}</div>}
+            : (endAdornment || onClear) && (
+                <div className="ui-input__end-adornment">
+                  {onClear && value && <Button variant="ghost" onClick={onClear} icon={<FaXmark size={16} />} />}
+                  {endAdornment}
+                </div>
+              )}
         </div>
         {shouldShowValidationWrapper && (
           <div className="ui-input__validation-wrapper">
