@@ -124,18 +124,6 @@ export const Default: Story = {
                 </div>
               </div>
               <FormInput name="email" label="Email" placeholder="E-mail" required reserveSpaceForError />
-              {/* <FormSelect
-                name="user"
-                label="User"
-                required
-                reserveSpaceForError
-                options={[
-                  { value: 'user-1', label: 'User 1' },
-                  { value: 'user-2', label: 'User 2' },
-                  { value: 'user-3', label: 'User 3' },
-                  { value: 'user-4', label: 'User 4' },
-                ]}
-              /> */}
               <FormInput
                 name="password"
                 label="Password"
@@ -145,13 +133,6 @@ export const Default: Story = {
                 required
                 reserveSpaceForError
               />
-              {/* <FormRadio name="formRadioExample" reserveSpaceForError isInline>
-                <RadioOption value="option_1" label="Label 1" />
-                <RadioOption value="option_2" label="Label 2" />
-                <RadioOption value="option_3" label="Label 3" />
-                <RadioOption value="option_4" label="Label 4" disabled />
-              </FormRadio>
-              <FormCheckbox name="notification" reserveSpaceForError label="Get notified" /> */}
               <div
                 style={{
                   display: 'flex',

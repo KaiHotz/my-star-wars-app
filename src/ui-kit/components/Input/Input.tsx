@@ -89,6 +89,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
             type={showPassword ? 'text' : type}
             placeholder={placeholderText}
             disabled={disabled}
+            value={value}
             {...rest}
           />
           {type === 'password'
