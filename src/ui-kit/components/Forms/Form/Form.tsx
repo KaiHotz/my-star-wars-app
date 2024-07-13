@@ -52,6 +52,8 @@ export function Form<T extends FieldValues>({
       const subscription = watch(() => handleSubmit(handleFormSubmit)());
 
       return () => subscription.unsubscribe();
+    } else {
+      return;
     }
   }, [handleFormSubmit, handleSubmit, submitOnChange, watch]);
 

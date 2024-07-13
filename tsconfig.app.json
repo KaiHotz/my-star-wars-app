@@ -32,6 +32,7 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
+    "noImplicitReturns": true,
     "strictNullChecks": true,
     "downlevelIteration": true,
     "types": ["node", "vite/client"]
