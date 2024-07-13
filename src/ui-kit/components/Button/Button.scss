@@ -97,11 +97,11 @@
   &--disabled {
     color: var(--emphasis-tertiary);
     background-color: var(--emphasis-quaternary);
+    cursor: not-allowed;
     &:hover {
       color: var(--emphasis-tertiary);
       background-color: var(--emphasis-quaternary);
     }
-    cursor: not-allowed;
   }
 
   &--small {
