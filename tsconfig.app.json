@@ -37,6 +37,6 @@
     "downlevelIteration": true,
     "types": ["node", "vite/client"]
   },
-  "include": ["src", "vite.config.ts", "vitest.config.ts", ".eslintrc.cjs"],
+  "include": ["src", "vite.config.ts", "vitest.config.ts", "eslint.config.js"],
   "exclude": ["node_modules"],
 }
