@@ -12,7 +12,7 @@ import storybook from 'eslint-plugin-storybook';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig(
-  globalIgnores(['dist', '.git', '.npmrc', 'coverage', 'storybook-static', '.storybook']),
+  globalIgnores(['dist', '.git', '.yarn', '.yarnrc', '.npmrc', 'coverage', 'storybook-static', '.storybook']),
   {
     extends: [js.configs.recommended, tseslint.configs.recommended, reactRefresh.configs.vite, eslintConfigPrettier],
     files: ['**/*.{ts,tsx}', '**/*.{js,jsx}'],
