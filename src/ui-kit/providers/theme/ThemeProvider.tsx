@@ -1,17 +1,7 @@
-import { createContext, FC, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
-import { noop } from 'lodash';
+import { type FC, type ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
+import { ThemeContext } from './context';
 import { EThemeOptions } from './types';
-
-export const ThemeContext = createContext<{
-  theme: EThemeOptions;
-  setTheme: (theme: EThemeOptions) => void;
-  isDark: boolean;
-}>({
-  theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? EThemeOptions.DARK : EThemeOptions.LIGHT,
-  setTheme: noop,
-  isDark: window.matchMedia('(prefers-color-scheme: dark)').matches ? true : false,
-});
 
 export const ThemeProvider: FC<{ name: string; children: ReactNode }> = ({ children, name }) => {
   const themeName = `${name}-theme`;

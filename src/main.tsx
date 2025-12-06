@@ -24,10 +24,16 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       locale="en"
       formats={{
         date: {
-          'month': { year: 'numeric', month: 'long' },
-          'long': { year: 'numeric', month: 'long', day: 'numeric' },
-          'short': { year: 'numeric', month: 'short', day: 'numeric' },
-          'dateTime': { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' },
+          month: { year: 'numeric', month: 'long' },
+          long: { year: 'numeric', month: 'long', day: 'numeric' },
+          short: { year: 'numeric', month: 'short', day: 'numeric' },
+          dateTime: {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+          },
         },
       }}
     >

@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { Button, capitalizeWords, highlightText } from 'src/ui-kit';
 import { omit } from 'lodash';
 import cx from 'clsx';
-import { TCategory } from 'src/api';
+import type { TCategory } from 'src/api';
 import { messages } from 'src/dictionary';
 import './Card.scss';
 

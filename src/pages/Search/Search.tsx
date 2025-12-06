@@ -1,5 +1,5 @@
-import { ChangeEvent, FC, useCallback, useState } from 'react';
-import { TSearch, useSearchAll } from 'src/api';
+import { type ChangeEvent, type FC, useCallback, useState } from 'react';
+import { type TSearch, useSearchAll } from 'src/api';
 import { useNavigate } from 'react-router-dom';
 import { useDebounce } from 'src/ui-kit';
 import { SearchField } from 'src/components/SearchField';

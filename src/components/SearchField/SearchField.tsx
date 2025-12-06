@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactNode } from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
 import { isEmpty } from 'lodash';
 import { useIntl } from 'react-intl';
 import { FaSistrix } from 'react-icons/fa6';

@@ -1,4 +1,4 @@
-import { FC, ReactNode, useCallback, useRef } from 'react';
+import { type FC, type ReactNode, useCallback, useRef } from 'react';
 import cx from 'clsx';
 
 export interface MenuItemProps {

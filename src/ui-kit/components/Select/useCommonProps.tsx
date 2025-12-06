@@ -3,8 +3,7 @@ import { omit } from 'lodash';
 import { FaAngleDown, FaXmark } from 'react-icons/fa6';
 
 import { getCSSVariable } from '../../utils';
-import { ISelectProps } from './Select';
-import { ISelectOption } from './types';
+import type { ISelectOption, ISelectProps } from './types';
 import { useTheme } from '../../hooks/useTheme';
 
 export const useCommonProps = <OptionType extends ISelectOption>({

@@ -1,7 +1,7 @@
-import { PropsWithChildren, useState } from 'react';
-import { Meta } from '@storybook/react';
+import { type PropsWithChildren, useState } from 'react';
+import type { Meta } from '@storybook/react-vite';
 
-import { IModalProps, Modal } from './Modal';
+import { type IModalProps, Modal } from './Modal';
 import { Button } from '../Button';
 
 const ModalBody = () => (

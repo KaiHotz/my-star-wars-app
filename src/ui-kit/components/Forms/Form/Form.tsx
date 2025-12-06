@@ -1,25 +1,31 @@
-import { ReactNode, useCallback, useEffect } from 'react';
+import { type ReactNode, useCallback, useEffect, useRef } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {
+import { FormProvider, useForm, useWatch } from 'react-hook-form';
+import type {
   DefaultValues,
   FieldValues,
-  FormProvider,
   Resolver,
   SubmitErrorHandler,
-  useForm,
   UseFormReset,
+  UseFormResetField,
   UseFormReturn,
   ValidationMode,
 } from 'react-hook-form';
 
+export interface IOnsubmitProps<T extends FieldValues> {
+  data: T;
+  reset: UseFormReset<T>;
+  resetField: UseFormResetField<T>;
+}
+
 export interface IFormProps<T extends FieldValues> {
-  onSubmit: (data: T, reset: UseFormReset<T>) => void;
-  children?: ((props: UseFormReturn<T>) => ReactNode) | ReactNode;
+  onSubmit: ({ data, reset, resetField }: IOnsubmitProps<T>) => void;
+  children?: ((props: UseFormReturn<T, unknown, T>) => ReactNode) | ReactNode;
   validationSchema?: yup.ObjectSchema<T>;
   defaultValues?: DefaultValues<T>;
   onError?: SubmitErrorHandler<T>;
-  shouldValidateOnChange?: boolean;
+  disabled?: boolean;
   validationMode?: keyof ValidationMode;
   submitOnChange?: boolean;
 }
@@ -29,33 +35,44 @@ export function Form<T extends FieldValues>({
   onSubmit,
   onError,
   validationSchema,
-  shouldValidateOnChange,
   defaultValues,
-  validationMode,
+  disabled,
+  validationMode = 'onSubmit',
   submitOnChange,
   ...rest
 }: IFormProps<T>) {
+  const hasMounted = useRef(false);
   const methods = useForm<T>({
-    //due to a type error in react-hook-form/resolvers, we need to cast the yupResolver to Resolver<T>
     resolver: validationSchema ? (yupResolver(validationSchema) as unknown as Resolver<T>) : undefined,
     defaultValues,
-    mode: shouldValidateOnChange ? 'onChange' : validationMode ? validationMode : 'onSubmit',
+    disabled,
+    mode: validationMode,
   });
-  const { handleSubmit, reset, watch } = methods;
 
-  const handleFormSubmit = useCallback((data: T) => onSubmit(data, reset), [onSubmit, reset]);
+  const { handleSubmit, reset, resetField } = methods;
+
+  const watchedValues = useWatch<T>({ control: methods.control });
+
+  const handleFormSubmit = useCallback(
+    (data: T) => onSubmit({ data, reset, resetField }),
+    [onSubmit, reset, resetField],
+  );
 
   const handleFormReset = useCallback(() => reset(), [reset]);
 
   useEffect(() => {
-    if (submitOnChange) {
-      const subscription = watch(() => handleSubmit(handleFormSubmit)());
-
-      return () => subscription.unsubscribe();
-    } else {
+    if (!submitOnChange) {
       return;
     }
-  }, [handleFormSubmit, handleSubmit, submitOnChange, watch]);
+
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+
+      return;
+    }
+
+    void handleSubmit(handleFormSubmit)();
+  }, [watchedValues, handleFormSubmit, handleSubmit, submitOnChange]);
 
   return (
     <FormProvider {...methods}>

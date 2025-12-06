@@ -1,7 +1,7 @@
-import { FC, useCallback } from 'react';
+import { type FC, useCallback } from 'react';
 import { useIntl } from 'react-intl';
-import { Button, capitalizeWords, Form, FormInput, FormSelect } from 'src/ui-kit';
-import { TCategory } from 'src/api';
+import { Button, capitalizeWords, Form, FormInput, FormSelect, type IOnsubmitProps } from 'src/ui-kit';
+import type { TCategory } from 'src/api';
 import * as yup from 'yup';
 import { messages } from 'src/dictionary';
 
@@ -28,7 +28,7 @@ export const EditForm: FC<IEditFormProps> = ({ entry, onSubmit, inProgress }) =>
   type TFormData = yup.InferType<typeof schema>;
 
   const handleSubmit = useCallback(
-    (data: TFormData) => {
+    ({ data }: IOnsubmitProps<TFormData>) => {
       onSubmit({
         ...entry,
         gender: data.gender.value,
@@ -45,17 +45,19 @@ export const EditForm: FC<IEditFormProps> = ({ entry, onSubmit, inProgress }) =>
     { value: 'unknown', label: fm(messages.genderUnknown) },
   ];
 
+  const defaultGender = entry?.gender
+    ? {
+        value: entry.gender,
+        label: capitalizeWords(entry.gender) || '',
+      }
+    : undefined;
+
   return (
     <Form
       defaultValues={{
         name: entry?.name || '',
         birth_year: entry?.birth_year || '',
-        gender: entry?.gender
-          ? {
-              value: entry.gender,
-              label: capitalizeWords(entry.gender) || '',
-            }
-          : undefined,
+        gender: defaultGender,
       }}
       onSubmit={handleSubmit}
       validationSchema={schema}

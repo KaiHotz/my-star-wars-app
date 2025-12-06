@@ -1,4 +1,4 @@
-import { forwardRef, InputHTMLAttributes, ReactElement, ReactNode, useState } from 'react';
+import { forwardRef, type InputHTMLAttributes, type ReactElement, type ReactNode, useState } from 'react';
 import cx from 'clsx';
 import { FaEye, FaEyeSlash, FaXmark } from 'react-icons/fa6';
 

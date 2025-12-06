@@ -1,10 +1,10 @@
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { keyNames } from '../../utils';
-import { IModalProps, Modal } from './Modal';
+import { type IModalProps, Modal } from './Modal';
 
 const modalProps: PropsWithChildren<IModalProps> = {
   onClose: vi.fn(),

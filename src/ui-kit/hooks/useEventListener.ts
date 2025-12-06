@@ -20,7 +20,9 @@ export const useEventListener: TUseEventListenerSignature = (eventName, handler,
 
   useEffect(
     () => {
-      if (element === null) return undefined;
+      if (element === null) {
+        return undefined;
+      }
 
       // Create event listener that calls handler function stored in ref
       const eventListener = (event: Event) => savedHandler.current(event as GlobalEventHandlersEventMap[typeof eventName]);

@@ -1,7 +1,11 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 import { highlightText } from '../highlightText';
+
+vi.mock('../getCSSVariable', () => ({
+  getCSSVariable: vi.fn(() => '#ff6b35'),
+}));
 
 describe('highlightText', () => {
   it('should highlight text', () => {
@@ -9,6 +13,6 @@ describe('highlightText', () => {
 
     const highlightedText = screen.getByText('highlight');
 
-    expect(highlightedText).toHaveStyle({ color: 'var(--orange-3)', fontWeight: 'bolder' });
+    expect(highlightedText).toHaveStyle({ color: '#ff6b35', fontWeight: 'bolder' });
   });
 });

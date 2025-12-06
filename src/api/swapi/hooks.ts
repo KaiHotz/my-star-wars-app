@@ -1,7 +1,7 @@
-import { InfiniteData, useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { type InfiniteData, useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { deleteCategoryItem, getCategories, getCategoryList, getSearchAll, updateCategoryItem } from './swapi';
-import { ICategoryList, TCategory } from './types';
+import type { ICategoryList, TCategory } from './types';
 
 export const useCategories = () => {
   return useQuery({

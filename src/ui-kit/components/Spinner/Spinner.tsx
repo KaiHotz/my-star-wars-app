@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { FaSpinner } from 'react-icons/fa6';
 import './Spinner.scss';
 

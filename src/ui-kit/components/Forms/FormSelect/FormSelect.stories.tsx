@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 import * as yup from 'yup';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Form } from '../Form';
+import { Form, type IOnsubmitProps } from '../Form';
 import { Button } from '../../Button';
-import { ISelectOption } from '../../Select';
+import type { ISelectOption } from '../../Select';
 import { FormSelect } from './FormSelect';
 
 const optionsDefault: ISelectOption[] = [
@@ -56,7 +56,7 @@ export const Default: Story = {
 
     type TFormData = yup.InferType<typeof schema>;
 
-    const onSubmit = (data: TFormData) => {
+    const onSubmit = ({ data }: IOnsubmitProps<TFormData>) => {
       console.log({ data });
 
       alert(JSON.stringify(data));

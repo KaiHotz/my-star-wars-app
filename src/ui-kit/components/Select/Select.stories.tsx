@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Select } from './Select';
-import { ISelectOption } from './types';
+import { type ISelectOption } from './types';
 
 const optionsDefault: ISelectOption[] = [
   { value: 'opt-1', label: 'Option 1' },

@@ -1,5 +1,5 @@
 import { defineMessages } from 'react-intl';
-import { MessageDescriptor } from '@formatjs/intl';
+import type { MessageDescriptor } from '@formatjs/intl';
 
 export const createDictionary = <U extends Record<string | number, string>, K extends keyof U, V extends U[K]>(
   base: string,

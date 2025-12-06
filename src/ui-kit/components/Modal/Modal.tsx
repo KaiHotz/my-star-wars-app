@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useRef } from 'react';
+import { type FC, type PropsWithChildren, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { noop } from 'lodash';
 import { FaXmark } from 'react-icons/fa6';

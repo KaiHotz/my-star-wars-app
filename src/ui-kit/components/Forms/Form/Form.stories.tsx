@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import * as yup from 'yup';
-import { FieldErrors, UseFormReset } from 'react-hook-form';
+import type { FieldErrors } from 'react-hook-form';
 
 import { Button } from '../../Button';
-import { Form } from './Form';
+import { Form, type IOnsubmitProps } from './Form';
 import { FormInput } from '../FormInput';
 import { capitalizeWords } from '../../../utils';
 
@@ -15,7 +15,6 @@ const meta: Meta<typeof Form> = {
   component: Form,
   args: {
     submitOnChange: false,
-    shouldValidateOnChange: true,
     validationMode: 'onChange',
   },
   argTypes: {
@@ -32,9 +31,6 @@ const meta: Meta<typeof Form> = {
       control: false,
     },
     onError: {
-      control: false,
-    },
-    shouldValidateOnChange: {
       control: false,
     },
     validationMode: {
@@ -64,7 +60,7 @@ export const Default: Story = {
       })
       .required();
     type TFormData = yup.InferType<typeof schema>;
-    const onSubmit = (data: TFormData, reset: UseFormReset<TFormData>) => {
+    const onSubmit = ({ data, reset }: IOnsubmitProps<TFormData>) => {
       console.log(data);
       reset();
     };

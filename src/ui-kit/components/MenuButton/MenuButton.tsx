@@ -1,10 +1,10 @@
-import { FC, MouseEvent, useCallback, useRef, useState } from 'react';
+import { type FC, type MouseEvent, useCallback, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
 import { FaChevronDown } from 'react-icons/fa6';
 
-import { Button, IButtonProps } from '../Button';
-import { ContextMenu, MenuItemProps } from '../ContextMenu';
+import { Button, type IButtonProps } from '../Button';
+import { ContextMenu, type MenuItemProps } from '../ContextMenu';
 import { useClickOutside } from '../../hooks';
 
 interface MenuButtonProps extends IButtonProps {
@@ -12,7 +12,7 @@ interface MenuButtonProps extends IButtonProps {
 }
 
 export const MenuButton: FC<MenuButtonProps> = ({ children, variant = 'ghost', items, ...rest }) => {
-  const menu = useRef(null);
+  const menu = useRef<HTMLDivElement>(null);
   const [menuElement, setMenuElement] = useState<HTMLElement | null>(null);
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
   const { styles, attributes } = usePopper(menuElement, popperElement, {

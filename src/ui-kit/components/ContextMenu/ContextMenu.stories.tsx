@@ -1,8 +1,8 @@
-import type { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react-vite';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
 
 import { ContextMenu } from './ContextMenu';
-import { MenuItemProps } from './ContextMenuItem';
+import type { MenuItemProps } from './ContextMenuItem';
 
 const meta: Meta<typeof ContextMenu> = {
   title: 'components/ContextMenu',

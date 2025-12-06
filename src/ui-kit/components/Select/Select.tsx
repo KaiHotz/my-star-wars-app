@@ -1,29 +1,12 @@
-import { ReactNode } from 'react';
 import cx from 'clsx';
-import Creatable, { CreatableProps } from 'react-select/creatable';
-import SelectComp, { GroupBase, Props as SelectProps } from 'react-select';
+import Creatable from 'react-select/creatable';
+import SelectComp from 'react-select';
 
 import { Label } from '../Label';
 import { Hint } from '../Hint';
 import { useCommonProps } from './useCommonProps';
-import { ISelectOption } from './types';
+import type { ISelectOption, ISelectProps } from './types';
 import './Select.scss';
-
-export interface ISelectProps<OptionType extends ISelectOption, IsMulti extends boolean = false>
-  extends SelectProps<OptionType, IsMulti>,
-    CreatableProps<OptionType, IsMulti, GroupBase<OptionType>> {
-  small?: boolean;
-  label?: string;
-  required?: boolean;
-  hintText?: string;
-  errorMsg?: string;
-  disabled?: boolean;
-  reserveSpaceForError?: boolean;
-  isCreatable?: boolean;
-  centerOptinons?: boolean;
-  labelEndAdornment?: ReactNode;
-  options: OptionType[];
-}
 
 export const Select = <OptionType extends ISelectOption>({
   name,

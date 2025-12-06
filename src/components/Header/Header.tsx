@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo } from 'react';
+import { type FC, useCallback, useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { HiBars3, HiMoon, HiSun } from 'react-icons/hi2';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';

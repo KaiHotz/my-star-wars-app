@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa6';
 
-import { MenuItemProps } from './ContextMenuItem';
+import type { MenuItemProps } from './ContextMenuItem';
 import { ContextMenu } from './ContextMenu';
 
 const defaultProps: { menuItems: MenuItemProps[] } = {

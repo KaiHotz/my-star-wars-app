@@ -1,9 +1,9 @@
-import { ChangeEvent, FC, useCallback, useEffect, useRef, useState } from 'react';
+import { type ChangeEvent, type FC, useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import cx from 'clsx';
 import { FaGrip, FaList, FaSistrix } from 'react-icons/fa6';
-import { TCategory, useCategoryList, useDeleteCategoryItem, useUpdateCategoryItem } from 'src/api';
+import { type TCategory, useCategoryList, useDeleteCategoryItem, useUpdateCategoryItem } from 'src/api';
 import { Button, Input, Modal, Spinner } from 'src/ui-kit';
 import { Card } from 'src/components/Card';
 import { LoaderContainer } from 'src/components/LoaderContainer';

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-import { ContextMenuItem, MenuItemProps } from './ContextMenuItem';
+import { ContextMenuItem, type MenuItemProps } from './ContextMenuItem';
 import './ContextMenu.scss';
 
 export interface ContextMenuProps {

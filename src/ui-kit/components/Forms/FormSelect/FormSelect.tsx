@@ -1,10 +1,10 @@
-import { MutableRefObject, useEffect, useImperativeHandle } from 'react';
-import { ActionMeta, GroupBase, Props as SelectProps, SingleValue } from 'react-select';
-import { FieldError, useController, useFormContext } from 'react-hook-form';
-import { CreatableProps } from 'react-select/creatable';
+import { type Ref, useEffect, useImperativeHandle } from 'react';
+import type { ActionMeta, GroupBase, Props as SelectProps, SingleValue } from 'react-select';
+import { type FieldError, useController, useFormContext } from 'react-hook-form';
+import type { CreatableProps } from 'react-select/creatable';
 import { noop } from 'lodash';
 
-import { ISelectOption, Select } from '../../Select';
+import { type ISelectOption, Select } from '../../Select';
 
 interface ICustomFieldError extends FieldError {
   label: FieldError;
@@ -24,7 +24,7 @@ export interface IFormSelectProps<OptionType extends ISelectOption, IsMulti exte
   reserveSpaceForError?: boolean;
   isCreatable?: boolean;
   options?: OptionType[];
-  selectRef?: MutableRefObject<{
+  selectRef?: Ref<{
     setValue?: (option: ISelectOption) => void;
     onBlur?: () => void;
   }>;

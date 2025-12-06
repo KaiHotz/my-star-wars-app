@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
 import * as yup from 'yup';
-import { FieldErrors } from 'react-hook-form';
-import type { Meta, StoryObj } from '@storybook/react';
+import { type FieldErrors } from 'react-hook-form';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FaCircleInfo, FaEye, FaEyeSlash, FaSistrix } from 'react-icons/fa6';
 
-import { Form } from '../Form';
+import { Form, type IOnsubmitProps } from '../Form';
 import { Button } from '../../Button';
 import { FormInput } from './FormInput';
 
@@ -76,7 +76,7 @@ export const Default: Story = {
 
     type TFormData = yup.InferType<typeof schema>;
 
-    const onSubmit = (data: TFormData) => {
+    const onSubmit = ({ data }: IOnsubmitProps<TFormData>) => {
       console.log(JSON.stringify(data));
     };
 
@@ -91,7 +91,7 @@ export const Default: Story = {
         defaultValues={{ textinput: '' }}
         onSubmit={onSubmit}
         onError={onError}
-        shouldValidateOnChange
+        validationMode="onChange"
       >
         <FormInput {...args} name="textinput" reserveSpaceForError />
 

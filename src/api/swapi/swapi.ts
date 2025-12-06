@@ -1,6 +1,6 @@
-import { InfiniteData } from '@tanstack/react-query';
+import type { InfiniteData } from '@tanstack/react-query';
 
-import { ICategoryList, ICategoryListParams, IResources, TCategory, TSearch } from './types';
+import type { ICategoryList, ICategoryListParams, IResources, TCategory, TSearch } from './types';
 import { httpClient } from '../httpClient';
 
 export const getCategories = async (signal: AbortSignal): Promise<string[]> => {

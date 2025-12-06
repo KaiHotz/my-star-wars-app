@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import cx from 'clsx';
 import { Backdrop, Spinner } from 'src/ui-kit';
 
