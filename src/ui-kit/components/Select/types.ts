@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { type CreatableProps } from 'react-select/creatable';
-import { type GroupBase, type Props as SelectProps } from 'react-select';
+import { type GroupBase, type Props as ReactSelectProps } from 'react-select';
 
 export interface ISelectOption {
   label: ReactNode;
@@ -10,8 +10,7 @@ export interface ISelectOption {
 }
 
 export interface ISelectProps<OptionType extends ISelectOption, IsMulti extends boolean = false>
-  extends SelectProps<OptionType, IsMulti>,
-    CreatableProps<OptionType, IsMulti, GroupBase<OptionType>> {
+  extends ReactSelectProps<OptionType, IsMulti>, CreatableProps<OptionType, IsMulti, GroupBase<OptionType>> {
   small?: boolean;
   label?: string;
   required?: boolean;

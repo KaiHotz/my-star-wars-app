@@ -3,7 +3,6 @@
   "bracketSpacing": true,
   "arrowParens": "always",
   "printWidth": 140,
-  "tabWidth": 2,
   "quoteProps": "preserve",
   "trailingComma": "all",
   "overrides": [

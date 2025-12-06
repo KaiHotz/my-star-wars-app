@@ -1,7 +1,7 @@
 import { type Ref, useEffect, useImperativeHandle } from 'react';
-import type { ActionMeta, GroupBase, Props as SelectProps, SingleValue } from 'react-select';
+import type { AsyncProps } from 'react-select/async';
+import type { ActionMeta, GroupBase, Props as ReactSelectProps, SingleValue } from 'react-select';
 import { type FieldError, useController, useFormContext } from 'react-hook-form';
-import type { CreatableProps } from 'react-select/creatable';
 import { noop } from 'lodash';
 
 import { type ISelectOption, Select } from '../../Select';
@@ -12,8 +12,7 @@ interface ICustomFieldError extends FieldError {
 }
 
 export interface IFormSelectProps<OptionType extends ISelectOption, IsMulti extends boolean = false>
-  extends SelectProps<OptionType, IsMulti>,
-    CreatableProps<OptionType, IsMulti, GroupBase<OptionType>> {
+  extends ReactSelectProps<OptionType, IsMulti>, AsyncProps<OptionType, IsMulti, GroupBase<OptionType>> {
   name: string;
   small?: boolean;
   label?: string;
