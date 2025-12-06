@@ -12,20 +12,10 @@ import storybook from 'eslint-plugin-storybook';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig(
-  globalIgnores([
-    'dist',
-    '.git',
-    '.npmrc',
-    'coverage',
-    'storybook-static',
-    '.storybook',
-    'src/graphql/__generated__',
-    'src/routeTree.gen.ts',
-    'src/components/GraphObject',
-  ]),
+  globalIgnores(['dist', '.git', '.npmrc', 'coverage', 'storybook-static', '.storybook']),
   {
     extends: [js.configs.recommended, tseslint.configs.recommended, reactRefresh.configs.vite, eslintConfigPrettier],
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{ts,tsx}', '**/*.{js,jsx}'],
     languageOptions: {
       ecmaVersion: 'latest',
       globals: globals.browser,
@@ -163,23 +153,6 @@ export default defineConfig(
       'storybook/hierarchy-separator': 'error',
       // example of disabling a rule
       'storybook/default-exports': 'off',
-    },
-  },
-  {
-    files: ['**/*.{js,jsx}'],
-    languageOptions: {
-      ecmaVersion: 'latest',
-      globals: globals.browser,
-    },
-    plugins: {
-      react: pluginReact,
-      'react-hooks': reactHooks,
-      'jsx-a11y': jsxA11y,
-      prettier: eslintPluginPrettier,
-    },
-    rules: {
-      'prettier/prettier': 'error',
-      'no-console': 'warn',
     },
   },
 );
