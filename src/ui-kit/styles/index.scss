@@ -1,4 +1,5 @@
-@import './variables/index.scss';
+@forward './variables/index.scss';
+@use './variables/index.scss' as *;
 
 @include font-faces();
 

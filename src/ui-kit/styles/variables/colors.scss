@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 //brand-colors
 $accent-1: #ffe81f;
 $accent-2: #e8ab22;
@@ -219,9 +221,9 @@ $blue-violet-5: #251556;
   --positive: color-mix(in srgb, var(--black), var(--blue-6) 93%);
   --negative: var(--gray-2);
   --emphasis-primary: var(--gray-4);
-  --emphasis-secondary: #{darken($gray-3, 20%)};
-  --emphasis-tertiary: #{darken($gray-3, 40%)};
-  --emphasis-quaternary: #{darken($gray-3, 60%)};
+  --emphasis-secondary: #{color.scale($gray-3, $lightness: -23.8318%)};
+  --emphasis-tertiary: #{color.scale($gray-3, $lightness: -47.6636%)};
+  --emphasis-quaternary: #{color.scale($gray-3, $lightness: -71.4953%)};
   --border-color: color-mix(in srgb, var(--emphasis-tertiary) 70%, transparent);
   --box-shadow: 0 0 7px 1px rgba(251, 251, 251, 0.2);
 }
@@ -231,9 +233,9 @@ $blue-violet-5: #251556;
   --positive: var(--gray-2);
   --negative: color-mix(in srgb, var(--black), var(--blue-6) 93%);
   --emphasis-primary: var(--gray-10);
-  --emphasis-secondary: #{lighten($gray-10, 20%)};
-  --emphasis-tertiary: #{lighten($gray-10, 40%)};
-  --emphasis-quaternary: #{lighten($gray-10, 60%)};
+  --emphasis-secondary: #{color.scale($gray-10, $lightness: 21.7021%)};
+  --emphasis-tertiary: #{color.scale($gray-10, $lightness: 43.4043%)};
+  --emphasis-quaternary: #{color.scale($gray-10, $lightness: 65.1064%)};
   --border-color: color-mix(in srgb, var(--emphasis-tertiary) 70%, transparent);
   --box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
 }
