@@ -34,8 +34,8 @@ export const getSearchAll = async ({
   return data;
 };
 
-export const getCategoryList = async ({ category, pageParam, signal }: ICategoryListParams): Promise<ICategoryList> => {
-  const { data } = await httpClient.get<ICategoryList>(`/${category}/?page=${pageParam}`, { signal });
+export const getCategoryList = async ({ category, signal }: ICategoryListParams): Promise<ICategoryList> => {
+  const { data } = await httpClient.get<ICategoryList>(`/${category}`, { signal });
 
   return data;
 };

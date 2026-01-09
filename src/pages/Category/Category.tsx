@@ -124,7 +124,7 @@ export const Category: FC = () => {
       {entryToDelete && (
         <Modal onClose={handleCloseModal} disableCoseOnClickOutside hasFrozenBackdrop>
           <div className="category__delete-modal">
-            <h3>{fm(messages.deleteEntry, { name: entryToDelete.name || entryToDelete.title })}</h3>
+            <h3>{fm(messages.deleteEntry, { name: entryToDelete?.name || entryToDelete?.title })}</h3>
             <div className="category__delete-modal-btns">
               <Button variant="secondary" onClick={handleCloseModal}>
                 {fm(messages.cancel)}

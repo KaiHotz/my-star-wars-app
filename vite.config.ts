@@ -18,4 +18,14 @@ export default defineConfig({
       },
     ],
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://swapi.py4e.com/api',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 });

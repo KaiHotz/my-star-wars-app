@@ -1,6 +1,6 @@
 # My Star Wars App 🌟
 
-A modern React application for exploring the Star Wars universe! Browse and search through characters, films, planets, species, starships, and vehicles using data from the [Star Wars API (SWAPI)](https://swapi.dev/).
+A modern React application for exploring the Star Wars universe! Browse and search through characters, films, planets, species, starships, and vehicles using data from the [Star Wars API (SWAPI)](https://swapi.py4e.com/).
 
 ## ✨ Features
 
@@ -75,7 +75,7 @@ yarn install
 Create a `.env` file in the root directory:
 
 ```env
-VITE_API_URL=https://swapi.dev/api
+VITE_API_URL=https://swapi.py4e.comv/api
 ```
 
 ### Development
@@ -153,7 +153,7 @@ The application includes a custom UI kit with reusable components:
 
 ## 🌐 API
 
-This application uses the [Star Wars API (SWAPI)](https://swapi.dev/) - a free, open API for Star Wars data.
+This application uses the [Star Wars API (SWAPI)](https://swapi.py4e.com/) - a free, open API for Star Wars data.
 
 ## 📄 License
 
@@ -161,5 +161,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- [SWAPI](https://swapi.dev/) for providing the Star Wars data
+- [SWAPI](https://swapi.py4e.com/) for providing the Star Wars data
 - The Star Wars franchise for the amazing universe
