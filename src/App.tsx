@@ -9,7 +9,7 @@ import { routePath } from './routes';
 const Category = lazy(() => import('./pages/Category'));
 const Search = lazy(() => import('./pages/Search'));
 
-function App() {
+export const App = () => {
   return (
     <div className="app">
       <ErrorBoundary>
@@ -24,7 +24,6 @@ function App() {
                   </Suspense>
                 }
               />
-              <Route path="*" element={<Navigate to={routePath.search} />} />
             </Route>
             <Route path={routePath.category} element={<MainLayout />}>
               <Route
@@ -36,13 +35,11 @@ function App() {
                   </Suspense>
                 }
               />
-              <Route path="*" element={<Navigate to={routePath.search} />} />
             </Route>
+            <Route path="*" element={<Navigate to={routePath.search} />} />
           </Routes>
         </BrowserRouter>
       </ErrorBoundary>
     </div>
   );
-}
-
-export default App;
+};

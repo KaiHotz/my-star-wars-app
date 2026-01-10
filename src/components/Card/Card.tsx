@@ -18,11 +18,15 @@ export interface ICardProps {
 export const Card = forwardRef<HTMLDivElement, ICardProps>(
   ({ data, variant = 'grid', onDelte, onEdit, searchTerm }, ref) => {
     const { formatMessage: fm } = useIntl();
-    const episodes = useMemo(() => data.films?.map((film) => film.replace(/\D/g, '')).join(','), [data.films]);
+    const episodes = useMemo(
+      () => data.films?.map((film) => film.split('/').filter(Boolean).pop()).join(','),
+      [data.films],
+    );
+
     const details = useMemo(
       () =>
         Object.entries(omit(data, ['created', 'edited', 'name', 'title'])).reduce((acc, [key, value]) => {
-          if (Array.isArray(value) || (typeof value === 'string' && value.includes('http'))) {
+          if (Array.isArray(value) || (typeof value === 'string' && value.startsWith('http'))) {
             return acc;
           }
 

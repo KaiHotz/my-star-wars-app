@@ -19,6 +19,7 @@ const Search: FC = () => {
 
   const handleSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value), []);
   const handleClearSearch = useCallback(() => setSearchTerm(''), []);
+
   const handleViewAll = useCallback(
     (category: string) => navigate(`${routePath.category}/${category}`, { state: { searchTerm } }),
     [navigate, searchTerm],

@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import { ThemeProvider } from './ui-kit';
-import App from './App.tsx';
+import { App } from './App.tsx';
 import './main.scss';
 
 const queryClient = new QueryClient({
