@@ -36,7 +36,9 @@ export const getSearchAll = async ({
 
 export const getAllLinkedData = async (url: string[] | string) => {
   const urls = Array.isArray(url) ? url : [url];
-  const response = await Promise.allSettled(urls.map((link) => httpClient.get(link)));
+  // Convert http to https to avoid mixed content issues on GitHub Pages
+  const secureUrls = urls.map((link) => link.replace(/^http:/, 'https:'));
+  const response = await Promise.allSettled(secureUrls.map((link) => httpClient.get(link)));
 
   const fullfilled = response.filter((item) => item.status === 'fulfilled').map((item) => item.value.data);
 
@@ -52,8 +54,11 @@ export const getCategoryList = async ({ category, pageParam, signal }: ICategory
       const result: TCategory = { ...item };
 
       for (const [key, value] of entries) {
-        if (key !== 'url' && (Array.isArray(value) || (typeof value === 'string' && value.startsWith('http')))) {
-          const linkedData = await getAllLinkedData(value);
+        if (key !== 'url' && (Array.isArray(value) || (typeof value === 'string' && value.startsWith('https://')))) {
+          // Convert http to https for secure requests
+          const secureValue =
+            typeof value === 'string' ? value.replace(/^http:/, 'https:') : value.map((v: string) => v.replace(/^http:/, 'https:'));
+          const linkedData = await getAllLinkedData(secureValue);
           (result as unknown as Record<string, unknown>)[key] = linkedData.map((data) => data.name || data.title).join(', ');
         }
       }
