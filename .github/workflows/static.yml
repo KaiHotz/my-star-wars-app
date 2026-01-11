@@ -39,6 +39,9 @@ jobs:
         run: yarn install --immutable
       - name: Build
         run: yarn build
+        env:
+          VITE_API_URL: '/api'
+          VITE_SWAPI_URL: 'https://swapi.py4e.com/api'
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
