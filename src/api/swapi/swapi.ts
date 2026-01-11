@@ -19,7 +19,7 @@ export const getSearchAll = async ({
   search: string;
   signal: AbortSignal;
 }): Promise<TSearch> => {
-  const response = await Promise.allSettled(categories.map((category) => httpClient.get(`/${category}/?search=${search}`, { signal })));
+  const response = await Promise.allSettled(categories.map((category) => httpClient.get(`${category}/?search=${search}`, { signal })));
 
   const fullfilled = response.filter((item) => item.status === 'fulfilled');
 
@@ -45,7 +45,7 @@ export const getAllLinkedData = async (url: string[] | string) => {
 };
 
 export const getCategoryList = async ({ category, pageParam, signal }: ICategoryListParams): Promise<ICategoryList> => {
-  const { data } = await httpClient.get<ICategoryList>(`/${category}/?page=${pageParam}`, { signal });
+  const { data } = await httpClient.get<ICategoryList>(`${category}/?page=${pageParam}`, { signal });
   // Process results to resolve linked data
   const detailedResults = await Promise.all(
     data.results.map(async (item) => {
