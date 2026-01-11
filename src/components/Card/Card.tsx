@@ -18,18 +18,9 @@ export interface ICardProps {
 export const Card = forwardRef<HTMLDivElement, ICardProps>(
   ({ data, variant = 'grid', onDelte, onEdit, searchTerm }, ref) => {
     const { formatMessage: fm } = useIntl();
-    const episodes = useMemo(
-      () => data.films?.map((film) => film.split('/').filter(Boolean).pop()).join(','),
-      [data.films],
-    );
-
     const details = useMemo(
       () =>
-        Object.entries(omit(data, ['created', 'edited', 'name', 'title'])).reduce((acc, [key, value]) => {
-          if (Array.isArray(value) || (typeof value === 'string' && value.startsWith('http'))) {
-            return acc;
-          }
-
+        Object.entries(omit(data, ['created', 'edited', 'name', 'title', 'url'])).reduce((acc, [key, value]) => {
           return {
             ...acc,
             [key]: value,
@@ -47,15 +38,14 @@ export const Card = forwardRef<HTMLDivElement, ICardProps>(
               : data.name || data.title}
           </h2>
           <div className="card__info">
-            {Object.entries({ ...details, episodes }).map(
-              ([key, value]) =>
-                value && (
-                  <div key={key}>
-                    <span className="bold">{capitalizeWords(key.replace(/_/g, ' '))}: </span>
-                    <span>{value}</span>
-                  </div>
-                ),
-            )}
+            {Object.entries(details)
+              .filter(([, value]) => value)
+              .map(([key, value]) => (
+                <div key={key}>
+                  <span className="bold">{capitalizeWords(key.replace(/_/g, ' '))}: </span>
+                  <span>{String(value)}</span>
+                </div>
+              ))}
           </div>
         </div>
         <div className="card__btns">

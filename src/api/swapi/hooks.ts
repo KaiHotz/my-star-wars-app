@@ -1,6 +1,6 @@
 import { type InfiniteData, useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { deleteCategoryItem, getCategories, getCategoryList, getSearchAll, updateCategoryItem } from './swapi';
+import { deleteCategoryItem, getAllLinkedData, getCategories, getCategoryList, getSearchAll, updateCategoryItem } from './swapi';
 import type { ICategoryList, TCategory } from './types';
 
 export const useCategories = () => {
@@ -66,6 +66,14 @@ export const useDeleteCategoryItem = (category?: string) => {
     onError: (error) => {
       console.error(error);
       throw new Error('Error deleting category item');
+    },
+  });
+};
+
+export const useAllLinkedData = () => {
+  return useMutation({
+    mutationFn: async (urls: string[] | string) => {
+      return await getAllLinkedData(urls);
     },
   });
 };

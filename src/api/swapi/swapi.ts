@@ -34,10 +34,35 @@ export const getSearchAll = async ({
   return data;
 };
 
+export const getAllLinkedData = async (url: string[] | string) => {
+  const urls = Array.isArray(url) ? url : [url];
+  const response = await Promise.allSettled(urls.map((link) => httpClient.get(link)));
+
+  const fullfilled = response.filter((item) => item.status === 'fulfilled').map((item) => item.value.data);
+
+  return fullfilled;
+};
+
 export const getCategoryList = async ({ category, pageParam, signal }: ICategoryListParams): Promise<ICategoryList> => {
   const { data } = await httpClient.get<ICategoryList>(`/${category}/?page=${pageParam}`, { signal });
+  // Process results to resolve linked data
+  const detailedResults = await Promise.all(
+    data.results.map(async (item) => {
+      const entries = Object.entries(item);
+      const result: TCategory = { ...item };
 
-  return data;
+      for (const [key, value] of entries) {
+        if (key !== 'url' && (Array.isArray(value) || (typeof value === 'string' && value.startsWith('http')))) {
+          const linkedData = await getAllLinkedData(value);
+          (result as unknown as Record<string, unknown>)[key] = linkedData.map((data) => data.name || data.title).join(', ');
+        }
+      }
+
+      return result;
+    }),
+  );
+
+  return { ...data, results: detailedResults };
 };
 
 export const updateCategoryItem = (data: Partial<TCategory>, queryData: InfiniteData<ICategoryList, unknown> | undefined) => {

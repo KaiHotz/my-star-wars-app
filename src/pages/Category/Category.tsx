@@ -23,6 +23,7 @@ export const Category: FC = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
   const { data, fetchNextPage, isLoading, isFetching, hasNextPage } = useCategoryList(category);
+
   const { mutateAsync: updateItem, isPending: isUpdating } = useUpdateCategoryItem(category);
   const { mutateAsync: deleteItem, isPending: isDeleting } = useDeleteCategoryItem(category);
 
@@ -31,6 +32,8 @@ export const Category: FC = () => {
       cardRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [data]);
+
+  const categoryItems = data?.pages.map(({ results }) => results).flat();
 
   const handleSearch = useCallback((e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value), []);
 
@@ -58,7 +61,6 @@ export const Category: FC = () => {
     }
   }, [deleteItem, entryToDelete, handleCloseModal]);
 
-  const categoryItems = data?.pages.map(({ results }) => results).flat();
   const filteredItems = categoryItems?.filter(({ name, title }) =>
     (name?.toLowerCase() || title?.toLowerCase())?.includes(search.toLowerCase()),
   );
